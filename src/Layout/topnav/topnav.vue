@@ -126,7 +126,7 @@ export default {
     .el-menu-demo {
       margin: 0 auto;
       display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
     }
   }
 }
