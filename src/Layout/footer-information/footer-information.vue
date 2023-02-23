@@ -3,7 +3,7 @@
     <!-- 底部友情链接栏 -->
     <div class="link-bar">
       <div class="link">
-        <el-link :underline="false">&emsp;友情链接:&emsp;</el-link>
+        &emsp;友情链接:&emsp;
         <el-link :underline="false">&emsp;教育部&emsp;</el-link>
         <el-link :underline="false">&emsp;国家广播电视台&emsp;</el-link>
         <el-link :underline="false">&emsp;福建省教育厅&emsp;</el-link>
@@ -19,8 +19,8 @@
         <el-link :underline="false" type="primary">0591-87091983</el-link>
         &emsp;举报邮箱：
         <el-link :underline="false" type="primary">fetv2020@163.com</el-link>
-
       </div>
+
       <div class="text-bar-item">
         福建省新闻道德委举报电话：
         <el-link :underline="false" type="primary">0591-87275327</el-link>
