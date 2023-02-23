@@ -21,19 +21,19 @@
       <!-- 导航栏 -->
       <div class="NavMenu">
         <el-menu :default-active="activeIndex2" class="el-menu-demo" mode="horizontal" @select="handleSelect"
-          background-color="#ba0825" text-color="#ffdcab" active-text-color="#fff" router="true">
+          background-color="#ba0825" text-color="#ffdcab" active-text-color="#fff" router>
           <el-menu-item index="/">首页</el-menu-item>
-          <el-menu-item index="news?1">头条新闻</el-menu-item>
-          <el-menu-item index="news?2">要闻聚焦</el-menu-item>
-          <el-menu-item index="news?3">校园</el-menu-item>
-          <el-menu-item index="news?4">FETV</el-menu-item>
-          <el-menu-item index="news?5">招考</el-menu-item>
-          <el-menu-item index="news?6">空中课堂</el-menu-item>
-          <el-menu-item index="news?7">家长</el-menu-item>
-          <el-menu-item index="news?8">师说</el-menu-item>
-          <el-menu-item index="news?9">职场</el-menu-item>
-          <el-menu-item index="news?10">微视频</el-menu-item>
-          <el-menu-item index="news?11">更多</el-menu-item>
+          <el-menu-item index="news?name=1">头条新闻</el-menu-item>
+          <el-menu-item index="news?name=2">要闻聚焦</el-menu-item>
+          <el-menu-item index="news?name=3">校园</el-menu-item>
+          <el-menu-item index="news?name=4">FETV</el-menu-item>
+          <el-menu-item index="news?name=5">招考</el-menu-item>
+          <el-menu-item index="news?name=6">空中课堂</el-menu-item>
+          <el-menu-item index="news?name=7">家长</el-menu-item>
+          <el-menu-item index="news?name=8">师说</el-menu-item>
+          <el-menu-item index="news?name=9">职场</el-menu-item>
+          <el-menu-item index="news?name=10">微视频</el-menu-item>
+          <el-menu-item index="news?name=11">更多</el-menu-item>
         </el-menu>
       </div>
     </div>
