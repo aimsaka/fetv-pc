@@ -21,7 +21,7 @@
           <el-carousel height="507px" width="806px" interval="6000" indicator-position="none">
             <el-carousel-item v-for="(item, index) in list" :key="index">
               <img :src=item alt="">
-              <div class="title"><span>{{ index }}</span>福州</div>
+              <div class="title"><span><span>{{ index + 1 }}</span>/3</span>福州</div>
             </el-carousel-item>
           </el-carousel>
         </div>
@@ -102,14 +102,24 @@ export default {
         right: 0px;
         background-color: rgb(0, 0, 0, 0.45);
         text-align: center;
-        color: rgba(255, 255, 255, 0.45);
-        font-size: 26px;
+        color: rgba(255, 255, 255, 0.647);
+        font-size: 24px;
         line-height: 70px;
 
         span {
+          position: absolute;
+          top: 25px;
+          left: 75px;
           line-height: 25px;
-          color: rgb(0, 0, 0, 0.45);
           font-size: 30px;
+          font-weight: 800;
+
+          span {
+            position: absolute;
+            top: -2px;
+            left: -27px;
+            font-size: 34px;
+          }
         }
 
       }
