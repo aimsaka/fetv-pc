@@ -1,6 +1,6 @@
 <template>
   <div>
-    新闻
+    新闻页面:{{ this.$route.query.name }}
   </div>
 </template>
 
@@ -18,7 +18,7 @@ export default {
 
   },
   created() {
-    console.log('1');
+    console.log(this.$route.query.name);
   },
 
   methods: {

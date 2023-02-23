@@ -75,7 +75,7 @@ export default {
 .link-bar {
   height: 68px;
   background-color: #f0f0f0;
-  line-height: 63px;
+  line-height: 68px;
 
   .link {
     display: flex;
