@@ -1,13 +1,12 @@
 <template>
   <div>
-    <!-- 一级路由出口 -->
-    <router-view />
+    新闻
   </div>
 </template>
 
 <script>
 export default {
-  name: 'FetvPcApp',
+  name: 'FetvPcHeadLinenews',
 
   data() {
     return {
