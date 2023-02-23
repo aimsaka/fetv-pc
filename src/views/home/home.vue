@@ -20,8 +20,8 @@
         <div class="block">
           <el-carousel height="507px" width="806px" interval="6000" indicator-position="none">
             <el-carousel-item v-for="(item, index) in list" :key="index">
-              <img :src=item alt="">
-              <div class="title"><span><span>{{ index + 1 }}</span>/3</span>福州</div>
+              <img :src=item.src alt="">
+              <div class="title"><span><span>{{ index + 1 }}</span>/3</span>{{ item.title }}</div>
             </el-carousel-item>
           </el-carousel>
         </div>
@@ -42,10 +42,22 @@ export default {
 
   data() {
     return {
-      list: [
-        require('../../imges/161b2574-dd97-490c-8a71-fcb8e7f11ac4.jpg'),
-        require('../../imges/b986c848-6565-4abf-8402-a7acb7838268.jpg'),
-        require('../../imges/d9aea775-eaa2-4ded-9261-be3ae08374b6.jpg')
+      list: [{
+        src: require('../../imges/161b2574-dd97-490c-8a71-fcb8e7f11ac4.jpg'),
+        title: '大雾弥漫宛如仙境 福建福州化身“天空之城”'
+      },
+      {
+        src: require('../../imges/b986c848-6565-4abf-8402-a7acb7838268.jpg'),
+        title: '福州：春暖花开 出游正当时'
+
+      },
+      {
+        src: require('../../imges/d9aea775-eaa2-4ded-9261-be3ae08374b6.jpg'),
+        title: '福建宁化：千亩李花怒放 绘就春日“雪景图”'
+      }
+
+
+
       ]
     };
   },
