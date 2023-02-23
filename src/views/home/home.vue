@@ -12,22 +12,26 @@
         第二届中国基础教育论坛暨中国教育学会第三十四次学术年会召开
       </div>
     </div>
-
+    <!-- 新闻内容 -->
     <div class="news-details">
+      <!-- 左边栏 -->
       <div class="left">
+        <!-- //轮播图 -->
         <div class="block">
-          <el-carousel height="507px" width="806px">
+          <el-carousel height="507px" width="806px" interval="6000" indicator-position="none">
             <el-carousel-item v-for="(item, index) in list" :key="index">
               <img :src=item alt="">
+              <div class="title"><span>{{ index }}</span>福州</div>
             </el-carousel-item>
           </el-carousel>
         </div>
       </div>
+      <!-- 右边栏 -->
       <div class="right">
 
       </div>
     </div>
-    <!-- //轮播图 -->
+
 
   </div>
 </template>
@@ -84,9 +88,30 @@ export default {
   .left {
     .block {
       width: 806px;
+      position: relative;
 
       img {
         width: 100%;
+      }
+
+      .title {
+        height: 70px;
+        width: 100%;
+        position: absolute;
+        bottom: 0px;
+        right: 0px;
+        background-color: rgb(0, 0, 0, 0.45);
+        text-align: center;
+        color: rgba(255, 255, 255, 0.45);
+        font-size: 26px;
+        line-height: 70px;
+
+        span {
+          line-height: 25px;
+          color: rgb(0, 0, 0, 0.45);
+          font-size: 30px;
+        }
+
       }
     }
   }
