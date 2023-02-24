@@ -21,7 +21,7 @@
         </div>
         <div class="table_title">
           <div class="dash"></div>
-          <div class="text">诗意中国——春色满园关不住</div>
+          <div class="text">诗意中国——春色满园关不住了</div>
         </div>
       </div>
     </div>
