@@ -18,7 +18,7 @@
       <div class="left">
         <!-- //轮播图 -->
         <div class="block">
-          <el-carousel height="507px" width="806px" interval="4000" indicator-position="none">
+          <el-carousel height="507px" width="806px" indicator-position="none">
             <el-carousel-item v-for="(item, index) in list" :key="index">
               <img :src=item.src alt="">
               <div class="title"><span><span>{{ index + 1 }}</span>/3</span>{{ item.title }}</div>
@@ -28,25 +28,33 @@
       </div>
       <!-- 右边栏 -->
       <div class="right">
+        <!-- 右边栏头部 -->
         <div slot="header" class="clearfix">
           <div class="head-text">
             要闻聚焦
             <div class="line"></div>
           </div>
-
           <div class="head-mark">
             <el-divider></el-divider>
             <div>每日最新教育资讯</div>
           </div>
 
         </div>
+        <!-- 右边栏新闻标题栏 -->
         <el-card class="box-card">
-          <div class="headline-news"> <img src="../../imges/新.png" />省关工委2023年全体委员会议召开</div>
           <div v-for="(item, index) in newsList" :key="index" class="text item">
-            <el-link target="_blank" :href="item.src">
-              &nbsp;<span class="point"></span>&nbsp; <img src="../../imges/shipin.png" alt="" v-if="item.switch">&nbsp;
-              {{ item.title }}
+            <!-- 第一栏显示 -->
+            <el-link :href="item.src" target="_blank" :underline="false">
+              <div class="headline-news" v-if="index === 0"> <img src="../../imges/新.png" />{{ item.title }}</div>
             </el-link>
+            <!-- 第二栏开始显示 -->
+            <el-link :href="item.src" target="_blank" :underline="false" v-if="index !== 0">
+              &nbsp;<span class="point"></span>&nbsp; <img src="../../imges/shipin.png" alt=""
+                v-if="item.switch">&nbsp;{{ item.title }}
+            </el-link>
+            <div class="more">
+              <div class="more-button" @click="toNews">更多内容</div>
+            </div>
           </div>
 
         </el-card>
@@ -79,33 +87,73 @@ export default {
 
       newsList: [
         {
-          title: '厦二十大精神走深走hhhhhhhhhhhhhhhhhhhhhhhhhhhhh实',
+          title: '省关工委2023年全体委员会议召开',
           src: '/NewsDetails?tid=1',
           switch: false
         },
         {
-          title: '厦二十大精神走深走hhhhhhhhhhhhhhhhhhhhhhhhhhhhh实',
+          title: '厦门理工学院：“三度提升”推进党的二十大精神走深走实',
           src: '/NewsDetails?tid=2',
           switch: false
         },
         {
-          title: '厦二十大精神走深走hhhhhhhhhhhhhhhhhhhhhhhhhhhhh实',
+          title: '今起可打印准考证！本周六，福建省公务员考试开考',
           src: '/NewsDetails?tid=3',
-          switch: false
+          switch: true
         },
         {
-          title: '厦二十大精神走深走hhhhhhhhhhhhhhhhhhhhhhhhhhhhh实',
+          title: '福建启动职业院校教师素质提高三年行动计划',
           src: '/NewsDetails?tid=4',
           switch: false
         },
         {
-          title: '厦二十大精神走深走hhhhhhhhhhhhhhhhhhhhhhhhhhhhh实',
+          title: '劳动光荣 声动校园',
           src: '/NewsDetails?tid=5',
+          switch: false
+        },
+        {
+          title: '《中国大百科全书》第三版集中发布',
+          src: '/NewsDetails?tid=6',
           switch: true
         },
         {
-          title: '厦二十大精神走深走hhhhhhhhhhhhhhhhhhhhhhhhhhhhh实',
-          src: '/NewsDetails?tid=6',
+          title: '吴敏婕委员：当好传播中华文化艺术的使者',
+          src: '/NewsDetails?tid=7',
+          switch: true
+        },
+        {
+          title: '福州格致中学：推动资源融合应用 打造立德树人新课堂',
+          src: '/NewsDetails?tid=8',
+          switch: true
+        },
+        {
+          title: '福建规定8种类型学生可确认为家庭经济困难',
+          src: '/NewsDetails?tid=9',
+          switch: false
+        },
+        {
+          title: '《福建省家庭经济困难学生认定办法》印发',
+          src: '/NewsDetails?tid=10',
+          switch: true
+        },
+        {
+          title: '纪录片《郑成功》今起在央视播出',
+          src: '/NewsDetails?tid=11',
+          switch: false
+        },
+        {
+          title: '纪录片《郑成功》今起在央视播出',
+          src: '/NewsDetails?tid=12',
+          switch: false
+        },
+        {
+          title: '纪录片《郑成功》今起在央视播出',
+          src: '/NewsDetails?tid=13',
+          switch: false
+        },
+        {
+          title: '纪录片《郑成功》今起在央视播出',
+          src: '/NewsDetails?tid=14',
           switch: false
         }
 
@@ -118,7 +166,9 @@ export default {
   },
 
   methods: {
-
+    toNews() {
+      console.log(1);
+    }
   },
 };
 </script>
@@ -200,28 +250,15 @@ export default {
     }
 
     .item {
-      height: 35px;
-      // margin-bottom: 14px;
-      align-items: center;
-      line-height: 35px;
-      // align-items: baseline;
-      display: flex;
-      justify-items: center;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      display: -webkit-box;
-      -webkit-line-clamp: 1;
-      /* 限制在一个块元素显示的文本的行数 */
-      -webkit-box-orient: vertical;
-      /* 垂直排列 */
-      word-break: break-all;
-      /* 内容自动换行 */
-      // text-overflow: ellipsis;
-      // white-space: nowrap;
+      margin-top: 14px;
+      // display: flex;
+      // justify-items: center;
+
 
       img {
         width: 17px;
         // align-items: baseline
+        vertical-align: text-bottom;
       }
     }
 
@@ -275,18 +312,42 @@ export default {
     }
 
     .box-card {
-      height: 100%;
+      height: 468px;
       border-top: none;
       box-shadow: 0px 6px 6px 0px rgba(115, 124, 139, 0.15);
+      position: relative;
 
       .headline-news {
         font-size: 20px;
         font-weight: 700;
-        margin-bottom: 10px;
+        margin-bottom: 6px;
 
         img {
           width: 25px;
           margin-right: 6px;
+        }
+      }
+
+      .more {
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        width: 100%;
+        height: 60px;
+        background-color: #fff;
+
+        .more-button {
+          position: absolute;
+          left: 140px;
+          top: 15px;
+          width: 63px;
+          height: 23px;
+          border-radius: 15px;
+          background-color: #f4f4f4;
+          text-align: center;
+          line-height: 23px;
+          font-size: 12px;
+          cursor: pointer
         }
       }
     }
@@ -306,6 +367,25 @@ export default {
 
 ::v-deep .el-divider--horizontal {
   margin-top: 21px;
+}
+
+::v-deep .el-link {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  /* 限制在一个块元素显示的文本的行数 */
+  -webkit-box-orient: vertical;
+  /* 垂直排列 */
+  word-break: break-all;
+}
+
+::v-deep .el-link.el-link--default:hover {
+  color: rgb(168, 38, 38);
+}
+
+::v-deep .el-card__body {
+  padding-top: 7px;
 }
 
 .el-carousel__item h3 {
