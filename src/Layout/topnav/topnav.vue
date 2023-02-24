@@ -158,6 +158,11 @@ export default {
   border-bottom: none;
 }
 
+.el-menu::after,
+.el-menu::before {
+  display: none;
+}
+
 @font-face {
   font-family: digifaw;
   src: url('../../common/font/digifaw.ttf');

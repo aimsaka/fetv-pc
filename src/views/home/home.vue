@@ -18,7 +18,7 @@
       <div class="left">
         <!-- //轮播图 -->
         <div class="block">
-          <el-carousel height="507px" width="806px" interval="6000" indicator-position="none">
+          <el-carousel height="507px" width="806px" interval="4000" indicator-position="none">
             <el-carousel-item v-for="(item, index) in list" :key="index">
               <img :src=item.src alt="">
               <div class="title"><span><span>{{ index + 1 }}</span>/3</span>{{ item.title }}</div>
@@ -28,7 +28,24 @@
       </div>
       <!-- 右边栏 -->
       <div class="right">
+        <div slot="header" class="clearfix">
+          <div class="head-text">
+            要闻聚焦
+            <div class="line"></div>
+          </div>
 
+          <div class="head-mark">
+            <el-divider></el-divider>
+            <div>每日最新教育资讯</div>
+          </div>
+
+        </div>
+        <el-card class="box-card">
+
+          <div v-for="o in 4" :key="o" class="text item">
+            {{ '列表内容 ' + o }}
+          </div>
+        </el-card>
       </div>
     </div>
 
@@ -90,7 +107,7 @@ export default {
 
 .news-details {
   width: 1200px;
-  background-color: rgb(238, 25, 25);
+  // background-color: rgb(238, 25, 25);
   margin: 0 auto;
   margin-top: 5px;
   display: flex;
@@ -141,8 +158,82 @@ export default {
   .right {
     width: 380px;
     height: 507px;
-    background-color: pink;
+    // background-color: pink;
+
+    .text {
+      font-size: 14px;
+    }
+
+    .item {
+      margin-bottom: 18px;
+    }
+
+    .clearfix:before,
+    .clearfix:after {
+      display: table;
+      content: "";
+    }
+
+    .clearfix:after {
+      clear: both
+    }
+
+    .clearfix {
+      width: 380px;
+      height: 40px;
+      display: flex;
+      justify-content: space-between;
+      line-height: 40px;
+    }
+
+    .head-text {
+      line-height: 25px;
+      // width: 64px;
+      font-size: 20px;
+      font-weight: 700;
+
+      .line {
+        margin-top: 11px;
+        background-color: #ba0825;
+        height: 4px;
+        width: 100%;
+      }
+    }
+
+    .head-mark {
+      width: 232px;
+      height: 40px;
+      display: flex;
+      justify-content: space-between;
+
+      el-divider {
+        width: 90px;
+      }
+    }
+
+    .box-card {
+      height: 100%;
+      border-top: none;
+      box-shadow: 0px 6px 6px 0px rgba(115, 124, 139, 0.15);
+
+
+    }
   }
+}
+
+::v-deep .el-card__header {
+  border-bottom: none;
+  border-top: none;
+  padding: 0px;
+  height: 45px;
+}
+
+::v-deep .el-divider {
+  width: 90px;
+}
+
+::v-deep .el-divider--horizontal {
+  margin-top: 18px;
 }
 
 .el-carousel__item h3 {
@@ -159,5 +250,9 @@ export default {
 
 .el-carousel__item:nth-child(2n+1) {
   background-color: #d3dce6;
+}
+
+.news-details .right .clearfix[data-v-39f87be5]:before {
+  display: none;
 }
 </style>
