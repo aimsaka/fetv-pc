@@ -1,0 +1,23 @@
+{
+  "id": "3914416",
+  "name": "fetv-pc",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "4890463",
+      "name": "视频",
+      "font_class": "shipin",
+      "unicode": "e6f4",
+      "unicode_decimal": 59124
+    },
+    {
+      "icon_id": "29441248",
+      "name": "新",
+      "font_class": "xin1",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    }
+  ]
+}

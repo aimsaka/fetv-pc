@@ -41,10 +41,14 @@
 
         </div>
         <el-card class="box-card">
-
-          <div v-for="o in 4" :key="o" class="text item">
-            {{ '列表内容 ' + o }}
+          <div class="headline-news"> <img src="../../imges/新.png" />省关工委2023年全体委员会议召开</div>
+          <div v-for="(item, index) in newsList" :key="index" class="text item">
+            <el-link target="_blank" :href="item.src">
+              &nbsp;<span class="point"></span>&nbsp; <img src="../../imges/shipin.png" alt="" v-if="item.switch">&nbsp;
+              {{ item.title }}
+            </el-link>
           </div>
+
         </el-card>
       </div>
     </div>
@@ -71,9 +75,39 @@ export default {
       {
         src: require('../../imges/d9aea775-eaa2-4ded-9261-be3ae08374b6.jpg'),
         title: '福建宁化：千亩李花怒放 绘就春日“雪景图”'
-      }
+      }],
 
-
+      newsList: [
+        {
+          title: '厦二十大精神走深走hhhhhhhhhhhhhhhhhhhhhhhhhhhhh实',
+          src: '/NewsDetails?tid=1',
+          switch: false
+        },
+        {
+          title: '厦二十大精神走深走hhhhhhhhhhhhhhhhhhhhhhhhhhhhh实',
+          src: '/NewsDetails?tid=2',
+          switch: false
+        },
+        {
+          title: '厦二十大精神走深走hhhhhhhhhhhhhhhhhhhhhhhhhhhhh实',
+          src: '/NewsDetails?tid=3',
+          switch: false
+        },
+        {
+          title: '厦二十大精神走深走hhhhhhhhhhhhhhhhhhhhhhhhhhhhh实',
+          src: '/NewsDetails?tid=4',
+          switch: false
+        },
+        {
+          title: '厦二十大精神走深走hhhhhhhhhhhhhhhhhhhhhhhhhhhhh实',
+          src: '/NewsDetails?tid=5',
+          switch: true
+        },
+        {
+          title: '厦二十大精神走深走hhhhhhhhhhhhhhhhhhhhhhhhhhhhh实',
+          src: '/NewsDetails?tid=6',
+          switch: false
+        }
 
       ]
     };
@@ -162,10 +196,33 @@ export default {
 
     .text {
       font-size: 14px;
+      color: #000;
     }
 
     .item {
-      margin-bottom: 18px;
+      height: 35px;
+      // margin-bottom: 14px;
+      align-items: center;
+      line-height: 35px;
+      // align-items: baseline;
+      display: flex;
+      justify-items: center;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      /* 限制在一个块元素显示的文本的行数 */
+      -webkit-box-orient: vertical;
+      /* 垂直排列 */
+      word-break: break-all;
+      /* 内容自动换行 */
+      // text-overflow: ellipsis;
+      // white-space: nowrap;
+
+      img {
+        width: 17px;
+        // align-items: baseline
+      }
     }
 
     .clearfix:before,
@@ -205,6 +262,12 @@ export default {
       height: 40px;
       display: flex;
       justify-content: space-between;
+      font-size: 16px;
+      font-family: Noto Sans S Chinese;
+      font-weight: 300;
+      font-style: italic;
+      color: #777777;
+      line-height: 40px;
 
       el-divider {
         width: 90px;
@@ -216,7 +279,16 @@ export default {
       border-top: none;
       box-shadow: 0px 6px 6px 0px rgba(115, 124, 139, 0.15);
 
+      .headline-news {
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 10px;
 
+        img {
+          width: 25px;
+          margin-right: 6px;
+        }
+      }
     }
   }
 }
@@ -233,7 +305,7 @@ export default {
 }
 
 ::v-deep .el-divider--horizontal {
-  margin-top: 18px;
+  margin-top: 21px;
 }
 
 .el-carousel__item h3 {
