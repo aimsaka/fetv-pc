@@ -5,7 +5,6 @@ import Layout from "../Layout/index.vue"
 import home from "../views/home/home.vue";
 // 新闻页面
 import news from "../views/news/news.vue";
-
 //文章详情页 
 import newsDetails from "../views/news-details/news-details.vue";
 
