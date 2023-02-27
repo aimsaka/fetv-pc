@@ -33,7 +33,11 @@ const router =new VueRouter({
   ],
   mode:'history'
 })
-
+//阻止跳转同一个路径网页报错
+const VueRouterPush = VueRouter.prototype.push
+VueRouter.prototype.push = function push (to) {
+  return VueRouterPush.call(this, to).catch(err => err)
+}
 
 export default router 
 

@@ -38,10 +38,10 @@
       </div>
       <!-- 更多选项扩展 -->
       <div class="more" v-show="this.visable">
-        <div @click="to(1)">
+        <div @click="to('直播访谈')">
           直播访谈
         </div>
-        <div @click="to(2)">
+        <div @click="to('福建教育报道')">
           福建教育报道
         </div>
       </div>
@@ -79,17 +79,12 @@ export default {
       }
     },
     to(e) {
-      // if (e == 1) {
-      //   this.$router.push({ path: '/news', query: { name: '直播访谈' } })
-      // } else {
-      //   this.$router.push({ path: '/news', query: { name: '福建教育报道' } })
-      // }
-      if (e == 1) {
-        this.$router.push('/news?name=直播访谈')
-      } else {
-        this.$router.push('/news?name=福建教育报道')
-      }
+      this.$router.push(`/news?name=${e}`)
       this.visable = false
+      console.log(this.$route.path);
+      if (this.$route.query.name === e) {
+        console.log('hh');
+      }
     }
   },
   created() {
