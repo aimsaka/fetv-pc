@@ -1,29 +1,20 @@
 <template>
-  <div>
-    文章详情
-  </div>
+  <div>文章详情</div>
 </template>
 
 <script>
 export default {
-  name: 'FetvPcNewsDetails',
+  name: "FetvPcNewsDetails",
 
   data() {
-    return {
-
-    };
+    return {};
   },
 
-  mounted() {
+  mounted() {},
 
-  },
-
-  methods: {
-
-  },
+  methods: {},
 };
 </script>
 
 <style scoped>
-
 </style>

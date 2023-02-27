@@ -1,11 +1,22 @@
 <template>
   <div class="main">
+    <!-- 左边内容 -->
     <div class="news_left">
       <breadCrumb
         class="breadCrumb"
         :message="{ path: this.$route.path, title: this.$route.query.name }"
       ></breadCrumb>
-      <div class="content" v-for="index of 10" :key="index">
+      <div
+        class="content"
+        v-for="item in description"
+        :key="item.tid"
+        @click="
+          $router.push({
+            path: '/newsDetails',
+            query: { tid: item.tid },
+          })
+        "
+      >
         <div class="title">{{ description[0].title }}</div>
         <div class="time">{{ description[0].publishTime }}</div>
       </div>
@@ -14,6 +25,7 @@
         </el-pagination>
       </div>
     </div>
+    <!-- 右边新闻内容 -->
     <div class="news_right">
       <div class="news_table">
         <div class="table">
@@ -39,6 +51,37 @@ export default {
           title:
             "习近平：深刻把握雷锋精神的时代内涵 让雷锋精神在新时代绽放更加璀璨的光芒",
           publishTime: "2023-02-24 09:38:59",
+          tid: 24487,
+        },
+        {
+          title:
+            "习近平：深刻把握雷锋精神的时代内涵 让雷锋精神在新时代绽放更加璀璨的光芒",
+          publishTime: "2023-02-24 09:38:59",
+          tid: 24488,
+        },
+        {
+          title:
+            "习近平：深刻把握雷锋精神的时代内涵 让雷锋精神在新时代绽放更加璀璨的光芒",
+          publishTime: "2023-02-24 09:38:59",
+          tid: 24489,
+        },
+        {
+          title:
+            "习近平：深刻把握雷锋精神的时代内涵 让雷锋精神在新时代绽放更加璀璨的光芒",
+          publishTime: "2023-02-24 09:38:59",
+          tid: 24490,
+        },
+        {
+          title:
+            "习近平：深刻把握雷锋精神的时代内涵 让雷锋精神在新时代绽放更加璀璨的光芒",
+          publishTime: "2023-02-24 09:38:59",
+          tid: 24491,
+        },
+        {
+          title:
+            "习近平：深刻把握雷锋精神的时代内涵 让雷锋精神在新时代绽放更加璀璨的光芒",
+          publishTime: "2023-02-24 09:38:59",
+          tid: 24492,
         },
       ],
     };
@@ -69,7 +112,7 @@ export default {
     flex-direction: column;
     // flex-direction: row;
     .el-breadcrumb {
-      width: 100px;
+      width: fit-content;
       height: 30px;
       line-height: 30px;
       padding: 0 15px;
@@ -102,6 +145,9 @@ export default {
     .block {
       margin: 50px auto;
     }
+  }
+  .news_left:hover {
+    cursor: pointer;
   }
   .news_right {
     width: 310px;
