@@ -6,6 +6,9 @@ import home from "../views/home/home.vue";
 // 新闻页面
 import news from "../views/news/news.vue";
 
+//文章详情页 
+import newsDetails from "../views/news-details/news-details.vue";
+
 Vue.use(VueRouter)
 const router =new VueRouter({
   routes : [
@@ -23,6 +26,10 @@ const router =new VueRouter({
           component:news,
         }
       ]
+    },
+    {
+      path:'/newsDetails',
+      component:newsDetails,
     }
   ],
   mode:'history'
