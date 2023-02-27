@@ -6,38 +6,28 @@
     <router-view />
     <!-- 底部布局 -->
     <footerInformation></footerInformation>
-
   </div>
 </template>
 
 <script>
 import topnav from "./topnav/topnav.vue";
 import footerInformation from "./footer-information/footer-information.vue";
-
 export default {
-
   components: {
     topnav,
     footerInformation,
   },
-  name: 'FetvPcIndex',
+  name: "FetvPcIndex",
 
   data() {
-    return {
-
-    };
+    return {};
   },
 
-  mounted() {
+  mounted() {},
 
-  },
-
-  methods: {
-
-  },
+  methods: {},
 };
 </script>
 
 <style lang="scss" scoped>
-
 </style>

@@ -5,7 +5,7 @@
       <div class="header-container">
         <el-row>
           <el-col :span="12">
-            <img src="../../imges/search-icon.png" class="logo">
+            <img src="../../imges/search-icon.png" class="logo" />
           </el-col>
           <el-col :span="12">
             <div class="header-container-right">
@@ -13,15 +13,27 @@
                 {{ time }}
               </p>
               <div class="date">{{ date }} {{ dey }}</div>
-              <el-input v-model="input" placeholder="搜索" prefix-icon="el-icon-search"></el-input>
+              <el-input
+                v-model="input"
+                placeholder="搜索"
+                prefix-icon="el-icon-search"
+              ></el-input>
             </div>
           </el-col>
         </el-row>
       </div>
       <!-- 导航栏 -->
       <div class="NavMenu">
-        <el-menu :default-active="activeIndex2" class="el-menu-demo" mode="horizontal" @select="handleSelect"
-          background-color="#ba0825" text-color="#ffdcab" active-text-color="#fff" router>
+        <el-menu
+          :default-active="activeIndex2"
+          class="el-menu-demo"
+          mode="horizontal"
+          @select="handleSelect"
+          background-color="#ba0825"
+          text-color="#ffdcab"
+          active-text-color="#fff"
+          router
+        >
           <el-menu-item index="/">首页</el-menu-item>
           <el-menu-item index="news?name=1">头条新闻</el-menu-item>
           <el-menu-item index="news?name=2">要闻聚焦</el-menu-item>
@@ -33,42 +45,59 @@
           <el-menu-item index="news?name=8">师说</el-menu-item>
           <el-menu-item index="news?name=9">职场</el-menu-item>
           <el-menu-item index="news?name=10">微视频</el-menu-item>
-          <el-menu-item index="news?name=11">更多</el-menu-item>
+          <el-menu-item index="news?name=11" @click="visable = !visable"
+            >更多</el-menu-item
+          >
         </el-menu>
       </div>
+      <!-- 更多选项扩展 -->
+      <div class="more" v-show="this.visable">
+        <div
+          @click="$router.push({ path: '/news', query: { name: '直播访谈' } })"
+        >
+          直播访谈
+        </div>
+        <div
+          @click="
+            $router.push({
+              path: '/news',
+              query: { name: '福建教育报道' },
+            })
+          "
+        >
+          福建教育报道
+        </div>
+      </div>
     </div>
-
   </div>
 </template>
 
 <script>
 export default {
-  name: 'FetvPcTopnav',
+  name: "FetvPcTopnav",
   data() {
     return {
-      input: '',
-      time: new Date().toLocaleTimeString('en-US', { hour12: false }),
+      input: "",
+      time: new Date().toLocaleTimeString("en-US", { hour12: false }),
       date: new Date().toLocaleDateString(),
-      dey: new Date().toLocaleDateString('zh-CN', { weekday: 'long' }),
-      activeIndex2: '1'
+      dey: new Date().toLocaleDateString("zh-CN", { weekday: "long" }),
+      activeIndex2: "1",
+      visable: false,
     };
   },
-
-  mounted() {
-
-  },
+  components: {},
+  mounted() {},
 
   methods: {
     handleSelect(key, keyPath) {
       console.log(key, keyPath);
-    }
+    },
   },
   created() {
     setInterval(() => {
-      this.time = new Date().toLocaleTimeString('en-US', { hour12: false });
+      this.time = new Date().toLocaleTimeString("en-US", { hour12: false });
     }, 1000);
-  }
-
+  },
 };
 </script>
 
@@ -114,7 +143,6 @@ export default {
       font-size: 12px;
       margin-bottom: 30px;
     }
-
   }
 
   .NavMenu {
@@ -122,11 +150,26 @@ export default {
     // padding-left: 500px;
     background-color: #ba0825;
 
-
     .el-menu-demo {
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
+    }
+  }
+  .more {
+    display: flex;
+    flex: 1;
+    margin-left: 150px;
+    width: 1234px;
+    height: 42px;
+    background-color: rgba(255, 248, 249, 0.95);
+    font-size: 14px;
+    color: #ba0825;
+    div {
+      cursor: pointer;
+      line-height: 42px;
+      text-align: center;
+      padding: 0 20px;
     }
   }
 }
@@ -144,8 +187,7 @@ export default {
   border-bottom: none;
 }
 
-
-::v-deep .el-menu--horizontal>.el-menu-item {
+::v-deep .el-menu--horizontal > .el-menu-item {
   height: 42px;
   line-height: 42px;
   border-bottom: none;
@@ -153,8 +195,7 @@ export default {
   font-weight: 800;
 }
 
-
-.el-menu--horizontal>.el-menu-item.is-active {
+.el-menu--horizontal > .el-menu-item.is-active {
   border-bottom: none;
 }
 
@@ -165,6 +206,6 @@ export default {
 
 @font-face {
   font-family: digifaw;
-  src: url('../../common/font/digifaw.ttf');
+  src: url("../../common/font/digifaw.ttf");
 }
 </style>
