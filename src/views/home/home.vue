@@ -67,6 +67,7 @@
     <content>
       <hotTopics class="w"></hotTopics>
       <liveVideo class="w"></liveVideo>
+      <column class="w"></column>
     </content>
 
 
@@ -76,10 +77,12 @@
 <script>
 import hotTopics from "../../components/hot-topics/hot-topics.vue";
 import liveVideo from "../../components/live-video/live-video.vue";
+import column from "../../components/column/column.vue";
 export default {
   components: {
     hotTopics,
-    liveVideo
+    liveVideo,
+    column
   },
   name: 'FetvPcHome',
   data() {
