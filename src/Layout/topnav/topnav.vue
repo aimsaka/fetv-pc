@@ -13,27 +13,15 @@
                 {{ time }}
               </p>
               <div class="date">{{ date }} {{ dey }}</div>
-              <el-input
-                v-model="input"
-                placeholder="搜索"
-                prefix-icon="el-icon-search"
-              ></el-input>
+              <el-input v-model="input" placeholder="搜索" prefix-icon="el-icon-search"></el-input>
             </div>
           </el-col>
         </el-row>
       </div>
       <!-- 导航栏 -->
       <div class="NavMenu">
-        <el-menu
-          :default-active="activeIndex2"
-          class="el-menu-demo"
-          mode="horizontal"
-          @select="handleSelect"
-          background-color="#ba0825"
-          text-color="#ffdcab"
-          active-text-color="#fff"
-          router
-        >
+        <el-menu :default-active="activeIndex2" class="el-menu-demo" mode="horizontal" @select="handleSelect"
+          background-color="#ba0825" text-color="#ffdcab" active-text-color="#fff" router>
           <el-menu-item index="/">首页</el-menu-item>
           <el-menu-item index="news?name=头条新闻">头条新闻</el-menu-item>
           <el-menu-item index="news?name=要闻聚焦">要闻聚焦</el-menu-item>
@@ -50,19 +38,10 @@
       </div>
       <!-- 更多选项扩展 -->
       <div class="more" v-show="this.visable">
-        <div
-          @click="$router.push({ path: '/news', query: { name: '直播访谈' } })"
-        >
+        <div @click="to('直播访谈')">
           直播访谈
         </div>
-        <div
-          @click="
-            $router.push({
-              path: '/news',
-              query: { name: '福建教育报道' },
-            })
-          "
-        >
+        <div @click="to('福建教育报道')">
           福建教育报道
         </div>
       </div>
@@ -83,19 +62,37 @@ export default {
       visable: false,
     };
   },
-  components: {},
-  mounted() {},
+  components: {
+    // flag() {
+    //   if
+    //   return this.a + this.b
+    // }
+  },
+  mounted() { },
 
   methods: {
     handleSelect(key, keyPath) {
       console.log(key, keyPath);
+      console.log(key);
+      if (key != null) {
+        this.visable = false
+      }
     },
+    to(e) {
+      this.$router.push(`/news?name=${e}`)
+      this.visable = false
+      console.log(this.$route.path);
+      if (this.$route.query.name === e) {
+        console.log('hh');
+      }
+    }
   },
   created() {
     setInterval(() => {
       this.time = new Date().toLocaleTimeString("en-US", { hour12: false });
     }, 1000);
   },
+
 };
 </script>
 
@@ -154,6 +151,7 @@ export default {
       justify-content: space-between;
     }
   }
+
   .more {
     display: flex;
     flex: 1;
@@ -163,6 +161,7 @@ export default {
     background-color: rgba(255, 248, 249, 0.95);
     font-size: 14px;
     color: #ba0825;
+
     div {
       cursor: pointer;
       line-height: 42px;
@@ -185,7 +184,7 @@ export default {
   border-bottom: none;
 }
 
-::v-deep .el-menu--horizontal > .el-menu-item {
+::v-deep .el-menu--horizontal>.el-menu-item {
   height: 42px;
   line-height: 42px;
   border-bottom: none;
@@ -193,7 +192,7 @@ export default {
   font-weight: 800;
 }
 
-.el-menu--horizontal > .el-menu-item.is-active {
+.el-menu--horizontal>.el-menu-item.is-active {
   border-bottom: none;
 }
 
