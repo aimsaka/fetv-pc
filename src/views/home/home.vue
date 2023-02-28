@@ -1,72 +1,84 @@
 <template>
   <div class="homo">
-    <!-- 头条新闻 -->
-    <div class="headline">
-      <div class="head-text">
-        福建省召开国家 “双高计划” 建设工作推进会
-      </div>
-      <div>
-        省委教育工委、省教育厅开展春季学期开学专项督导
-      </div>
-      <div>
-        第二届中国基础教育论坛暨中国教育学会第三十四次学术年会召开
-      </div>
-    </div>
-    <!-- 新闻内容 -->
-    <div class="news-details">
-      <!-- 左边栏 -->
-      <div class="left">
-        <!-- //轮播图 -->
-        <div class="block">
-          <el-carousel height="507px" width="806px" indicator-position="none">
-            <el-carousel-item v-for="(item, index) in list" :key="index">
-              <img :src=item.src alt="">
-              <div class="title"><span><span>{{ index + 1 }}</span>/3</span>{{ item.title }}</div>
-            </el-carousel-item>
-          </el-carousel>
+    <!-- 头部 -->
+    <header>
+      <!-- 头条大字 -->
+      <div class="headline">
+        <div class="head-text">
+          福建省召开国家 “双高计划” 建设工作推进会
+        </div>
+        <div>
+          省委教育工委、省教育厅开展春季学期开学专项督导
+        </div>
+        <div>
+          第二届中国基础教育论坛暨中国教育学会第三十四次学术年会召开
         </div>
       </div>
-      <!-- 右边栏 -->
-      <div class="right">
-        <!-- 右边栏头部 -->
-        <div slot="header" class="clearfix">
-          <div class="head-text">
-            要闻聚焦
-            <div class="line"></div>
+      <!-- 新闻栏目 -->
+      <div class="news-details">
+        <!-- 左边栏 -->
+        <div class="left">
+          <!-- //轮播图 -->
+          <div class="block">
+            <el-carousel height="507px" width="806px" indicator-position="none">
+              <el-carousel-item v-for="(item, index) in list" :key="index">
+                <img :src=item.src alt="">
+                <div class="title"><span><span>{{ index + 1 }}</span>/3</span>{{ item.title }}</div>
+              </el-carousel-item>
+            </el-carousel>
           </div>
-          <div class="head-mark">
-            <el-divider></el-divider>
-            <div>每日最新教育资讯</div>
-          </div>
-
         </div>
-        <!-- 右边栏新闻标题栏 -->
-        <el-card class="box-card">
-          <div v-for="(item, index) in newsList" :key="index" class="text item">
-            <!-- 第一栏显示 -->
-            <el-link :href="item.src" target="_blank" :underline="false">
-              <div class="headline-news" v-if="index === 0"> <img src="../../imges/新.png" />{{ item.title }}</div>
-            </el-link>
-            <!-- 第二栏开始显示 -->
-            <el-link :href="item.src" target="_blank" :underline="false" v-if="index !== 0">
-              &nbsp;<span class="point"></span>&nbsp; <img src="../../imges/shipin.png" alt=""
-                v-if="item.switch">&nbsp;{{ item.title }}
-            </el-link>
-            <div class="more">
-              <div class="more-button" @click="toNews">更多内容</div>
+        <!-- 右边栏 -->
+        <div class="right">
+          <!-- 右边栏头部 -->
+          <div slot="header" class="clearfix">
+            <div class="head-text">
+              要闻聚焦
+              <div class="line"></div>
             </div>
-          </div>
+            <div class="head-mark">
+              <el-divider></el-divider>
+              <div>每日最新教育资讯</div>
+            </div>
 
-        </el-card>
+          </div>
+          <!-- 右边栏新闻标题栏 -->
+          <el-card class="box-card">
+            <div v-for="(item, index) in newsList" :key="index" class="text item">
+              <!-- 第一栏显示 -->
+              <el-link :href="item.src" target="_blank" :underline="false">
+                <div class="headline-news" v-if="index === 0"> <img src="../../imges/新.png" />{{ item.title }}</div>
+              </el-link>
+              <!-- 第二栏开始显示 -->
+              <el-link :href="item.src" target="_blank" :underline="false" v-if="index !== 0">
+                &nbsp;<span class="point"></span>&nbsp; <img src="../../imges/shipin.png" alt=""
+                  v-if="item.switch">&nbsp;{{ item.title }}
+              </el-link>
+              <div class="more">
+                <div class="more-button" @click="toNews">更多内容</div>
+              </div>
+            </div>
+
+          </el-card>
+        </div>
       </div>
-    </div>
+    </header>
+    <!-- 内容 -->
+    <content>
+      <hotTopics class="w">
+      </hotTopics>
+    </content>
 
 
   </div>
 </template>
 
 <script>
+import hotTopics from "../../components/hot-topics/hot-topics.vue";
 export default {
+  components: {
+    hotTopics
+  },
   name: 'FetvPcHome',
 
   data() {
@@ -272,44 +284,7 @@ export default {
       clear: both
     }
 
-    .clearfix {
-      width: 380px;
-      height: 40px;
-      display: flex;
-      justify-content: space-between;
-      line-height: 40px;
-    }
 
-    .head-text {
-      line-height: 25px;
-      // width: 64px;
-      font-size: 20px;
-      font-weight: 700;
-
-      .line {
-        margin-top: 11px;
-        background-color: #ba0825;
-        height: 4px;
-        width: 100%;
-      }
-    }
-
-    .head-mark {
-      width: 232px;
-      height: 40px;
-      display: flex;
-      justify-content: space-between;
-      font-size: 16px;
-      font-family: Noto Sans S Chinese;
-      font-weight: 300;
-      font-style: italic;
-      color: #777777;
-      line-height: 40px;
-
-      el-divider {
-        width: 90px;
-      }
-    }
 
     .box-card {
       height: 468px;
@@ -337,17 +312,8 @@ export default {
         background-color: #fff;
 
         .more-button {
-          position: absolute;
           left: 140px;
           top: 15px;
-          width: 63px;
-          height: 23px;
-          border-radius: 15px;
-          background-color: #f4f4f4;
-          text-align: center;
-          line-height: 23px;
-          font-size: 12px;
-          cursor: pointer
         }
       }
     }

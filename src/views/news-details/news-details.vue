@@ -73,7 +73,12 @@ export default {
     breadCrumb,
     footerInformationVue,
   },
+<<<<<<< HEAD
   mounted() {},
+=======
+
+  mounted() { },
+>>>>>>> b4c28464c03c847b5b9fe40b848813202841018f
 
   methods: {
     getAnother() {
@@ -83,6 +88,7 @@ export default {
 };
 </script>
 
+<<<<<<< HEAD
 <style scoped lang="scss">
 .main {
   width: 1200px;
@@ -187,4 +193,8 @@ export default {
     }
   }
 }
+=======
+<style scoped>
+
+>>>>>>> b4c28464c03c847b5b9fe40b848813202841018f
 </style>
