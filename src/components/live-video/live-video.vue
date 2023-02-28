@@ -9,9 +9,9 @@
       </el-col>
 
       <el-col :span="2">
-        <el-button type="text" style="color: #ffdfaf;">查看更多 <icon class="el-icon-arrow-right"
+        <el-button type="text" style="color: #ffdfaf;">查看更多 <div class="el-icon-arrow-right"
             type="success|success_no_circle|info|warn|waiting|cancel|download|search|clear" size="23" color="#ffdfaf">
-          </icon>
+          </div>
         </el-button>
       </el-col>
     </el-row>
@@ -34,10 +34,7 @@
         <el-link :underline="false" :href="item.id">
           <div class="title">{{ item.title }}</div>
         </el-link>
-
-
       </div>
-
     </div>
   </div>
 </template>

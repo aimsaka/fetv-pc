@@ -68,6 +68,7 @@
       <hotTopics class="w"></hotTopics>
       <liveVideo class="w"></liveVideo>
       <column class="w"></column>
+      <schoolInformation class="x"></schoolInformation>
     </content>
 
 
@@ -78,11 +79,13 @@
 import hotTopics from "../../components/hot-topics/hot-topics.vue";
 import liveVideo from "../../components/live-video/live-video.vue";
 import column from "../../components/column/column.vue";
+import schoolInformation from "../../components/school-information/school-information.vue";
 export default {
   components: {
     hotTopics,
     liveVideo,
-    column
+    column,
+    schoolInformation
   },
   name: 'FetvPcHome',
   data() {
@@ -250,6 +253,46 @@ export default {
   .right {
     width: 380px;
     height: 507px;
+
+    .clearfix {
+      width: 380px;
+      height: 40px;
+      display: flex;
+      // justify-content: space-between;
+      line-height: 40px;
+    }
+
+    .head-text {
+      line-height: 25px;
+      // width: 64px;
+      font-size: 20px;
+      font-weight: 700;
+
+      .line {
+        margin-top: 11px;
+        background-color: #ba0825;
+        height: 4px;
+        width: 100%;
+      }
+    }
+
+    .head-mark {
+      width: 232px;
+      height: 40px;
+      display: flex;
+      justify-content: space-between;
+      margin-left: 45px;
+      font-size: 16px;
+      font-family: Noto Sans S Chinese;
+      font-weight: 300;
+      font-style: italic;
+      color: #777777;
+      line-height: 40px;
+
+      el-divider {
+        width: 90px;
+      }
+    }
 
     // background-color: pink;
     .text {

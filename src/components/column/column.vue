@@ -8,6 +8,11 @@
         自办原创本土节目
       </template>
     </layout>
+    <div class="img">
+      <div class="item" v-for="(item, index) in src" :key="index">
+        <img :src="item" alt="">
+      </div>
+    </div>
   </div>
 </template>
 
@@ -21,7 +26,11 @@ export default {
 
   data() {
     return {
-
+      src: [
+        require('../../imges/fjjy.png'),
+        require('../../imges/xckp.jpg'),
+        require('../../imges/fwgdn.png')
+      ]
     };
   },
 
@@ -38,5 +47,21 @@ export default {
 <style lang="scss" scoped>
 .column {
   margin-top: 20px;
+
+  .img {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+
+    .item {
+      width: 388px;
+      height: 214px;
+
+      img {
+        width: 388px;
+        height: 214px;
+      }
+    }
+  }
 }
 </style>

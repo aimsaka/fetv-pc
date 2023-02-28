@@ -7,6 +7,7 @@
             <slot name="title"></slot>
             <div class="line"></div>
           </div>
+
           <div class="head-mark">
             <el-divider></el-divider>
             <div>
