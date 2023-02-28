@@ -1,6 +1,6 @@
 <template>
   <!-- 导航面包屑 -->
-  <el-breadcrumb separator-class="el-icon-arrow-right">
+  <el-breadcrumb separator-class="el-icon-arrow-right" class="breadCrumb">
     <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
     <el-breadcrumb-item
       ><a :href="message.path">{{ message.title }}</a></el-breadcrumb-item
@@ -28,8 +28,18 @@ export default {
     };
   },
   props: ["message"],
+  mounted() {},
 };
 </script>
 
 <style lang="scss" scoped>
+.breadCrumb {
+  width: fit-content;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 15px;
+  background-color: #f8f8f8;
+  margin-top: 30px;
+  margin-bottom: 25px;
+}
 </style>

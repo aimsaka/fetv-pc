@@ -35,19 +35,17 @@
           router
         >
           <el-menu-item index="/">首页</el-menu-item>
-          <el-menu-item index="news?name=1">头条新闻</el-menu-item>
-          <el-menu-item index="news?name=2">要闻聚焦</el-menu-item>
-          <el-menu-item index="news?name=3">校园</el-menu-item>
-          <el-menu-item index="news?name=4">FETV</el-menu-item>
-          <el-menu-item index="news?name=5">招考</el-menu-item>
-          <el-menu-item index="news?name=6">空中课堂</el-menu-item>
-          <el-menu-item index="news?name=7">家长</el-menu-item>
-          <el-menu-item index="news?name=8">师说</el-menu-item>
-          <el-menu-item index="news?name=9">职场</el-menu-item>
-          <el-menu-item index="news?name=10">微视频</el-menu-item>
-          <el-menu-item index="news?name=11" @click="visable = !visable"
-            >更多</el-menu-item
-          >
+          <el-menu-item index="news?name=头条新闻">头条新闻</el-menu-item>
+          <el-menu-item index="news?name=要闻聚焦">要闻聚焦</el-menu-item>
+          <el-menu-item index="news?name=校园">校园</el-menu-item>
+          <el-menu-item index="news?name=FETV">FETV</el-menu-item>
+          <el-menu-item index="news?name=招考">招考</el-menu-item>
+          <el-menu-item index="news?name=空中课堂">空中课堂</el-menu-item>
+          <el-menu-item index="news?name=家长">家长</el-menu-item>
+          <el-menu-item index="news?name=师说">师说</el-menu-item>
+          <el-menu-item index="news?name=职场">职场</el-menu-item>
+          <el-menu-item index="news?name=微视频">微视频</el-menu-item>
+          <el-menu-item @click="visable = !visable">更多</el-menu-item>
         </el-menu>
       </div>
       <!-- 更多选项扩展 -->

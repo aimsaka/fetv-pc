@@ -101,7 +101,7 @@ export default {
 <style scoped lang="scss">
 .main {
   width: 1200px;
-  margin: 40px 0 0 170px;
+  margin: 0 auto;
   display: flex;
   justify-content: space-around;
 
@@ -111,14 +111,14 @@ export default {
     display: flex;
     flex-direction: column;
     // flex-direction: row;
-    .el-breadcrumb {
-      width: fit-content;
-      height: 30px;
-      line-height: 30px;
-      padding: 0 15px;
-      background-color: #f8f8f8;
-      margin-bottom: 30px;
-    }
+    // .el-breadcrumb {
+    //   width: fit-content;
+    //   height: 30px;
+    //   line-height: 30px;
+    //   padding: 0 15px;
+    //   background-color: #f8f8f8;
+    //   margin-bottom: 30px;
+    // }
     .content {
       width: 830px;
       // padding-top: 100px;
