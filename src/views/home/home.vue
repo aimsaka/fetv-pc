@@ -65,8 +65,7 @@
     </header>
     <!-- 内容 -->
     <content>
-      <hotTopics class="w">
-      </hotTopics>
+      <hotTopics class="w"></hotTopics>
       <liveVideo class="w"></liveVideo>
     </content>
 
@@ -180,6 +179,7 @@ export default {
   },
 };
 </script>
+
 <style lang="scss" scoped>
 .headline {
   // align-items: center;

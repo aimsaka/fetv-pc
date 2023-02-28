@@ -33,7 +33,6 @@ export default {
     layout
   },
   name: 'FetvPcHotTopics',
-
   data() {
     return {
       list: [{

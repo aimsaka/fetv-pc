@@ -71,8 +71,6 @@ export default {
     footerInformationVue,
   },
 
-
-
   methods: {
     getAnother() {
       alert(111);
@@ -80,6 +78,7 @@ export default {
   },
 };
 </script>
+
 
 <style lang="scss" scoped >
 .main {
