@@ -46,13 +46,18 @@
         <div class="classroom">
           <div class="img-item">
             <div v-for="item in teacher" :key="item.src">
-              <el-image style="width: 270px; height: 150px; margin-left: 15px;" :src="item.src"></el-image>
+              <el-link :underline="false" href="https://element.eleme.io" target="_blank">
+                <el-image style="width: 270px; height: 150px; margin-left: 15px;" :src="item.src"></el-image>
+              </el-link>
             </div>
           </div>
           <div class="link-box">
+
             <div class="link" v-for="item in teacher" :key="item.src">
-              {{ item.title }}
-              <div class="circle"></div>
+              <el-link :underline="false" href="https://element.eleme.io" target="_blank">
+                {{ item.title }}
+                <div class="circle"></div>
+              </el-link>
             </div>
           </div>
 
@@ -235,7 +240,7 @@ export default {
 
         .link {
           width: 400px;
-          padding-left: 30px;
+          padding-left: 15px;
           line-height: 40px;
           position: relative;
           font-size: 15px;
@@ -245,6 +250,10 @@ export default {
           white-space: nowrap;
           /* 阻止文本换行 */
           text-overflow: ellipsis;
+
+          .el-link--default {
+            padding-left: 30px !important;
+          }
 
           .circle {
             position: absolute;
