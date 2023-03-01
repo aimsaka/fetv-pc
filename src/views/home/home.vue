@@ -69,6 +69,7 @@
       <liveVideo class="w"></liveVideo>
       <column class="w"></column>
       <schoolInformation class="x"></schoolInformation>
+      <miniVideo class="w"></miniVideo>
     </content>
 
 
@@ -80,12 +81,14 @@ import hotTopics from "../../components/hot-topics/hot-topics.vue";
 import liveVideo from "../../components/live-video/live-video.vue";
 import column from "../../components/column/column.vue";
 import schoolInformation from "../../components/school-information/school-information.vue";
+import miniVideo from "../../components/mini-video/mini-video.vue";
 export default {
   components: {
     hotTopics,
     liveVideo,
     column,
-    schoolInformation
+    schoolInformation,
+    miniVideo
   },
   name: 'FetvPcHome',
   data() {

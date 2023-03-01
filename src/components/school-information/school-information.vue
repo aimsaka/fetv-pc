@@ -15,13 +15,17 @@
         <!-- 左边栏内容 -->
         <el-carousel height="480px" indicator-position="none">
           <el-carousel-item>
+            <!-- 循环渲染的盒子 -->
             <div class="school" v-for="item in list" :key="item.src">
+              <!-- 链接 -->
               <el-link :underline="false" href="https://element.eleme.io" target="_blank">
                 <div class="item">
                   <span>
+                    <!-- 图片部分 -->
                     <el-image style="width: 248px; height: 141px" :src="item.src"></el-image>
                   </span>
                   <span style="width: 317px;">
+                    <!-- 文字部分 -->
                     <div class="name">
                       <div>{{ item.name }}</div>
                       <div class="button"><i class="el-icon-arrow-right"></i></div>
