@@ -76,37 +76,40 @@
       </div>
     </header>
     <!-- 内容 -->
+
     <content>
-      <!-- 热点专题 -->
-      <hotTopics class="w"> </hotTopics>
-      <div class="news_container">
-        <div class="container_item" v-for="index in 6" :key="index">
-          <elCol></elCol>
-        </div>
-        <div class="chopsticks">
-          <img
-            src="../../imges/44f2f1b1-5697-4bc4-bca4-4c86384f3c50.png"
-            alt=""
-          />
-        </div>
-      </div>
+      <advertisementVue :advertisement="url"></advertisementVue>
+      <hotTopics class="w"></hotTopics>
+      <liveVideo class="w"></liveVideo>
+      <elCol></elCol>
+      <advertisementVue></advertisementVue>
+      <column class="w"></column>
+      <schoolInformation class="x"></schoolInformation>
     </content>
   </div>
 </template>
 
 <script>
 import hotTopics from "../../components/hot-topics/hot-topics.vue";
+import liveVideo from "../../components/live-video/live-video.vue";
+import column from "../../components/column/column.vue";
+import schoolInformation from "../../components/school-information/school-information.vue";
 import elCol from "../../components/el-col/el-col.vue";
 
+import advertisementVue from "../../components/advertisement/advertisement.vue";
 export default {
   components: {
     hotTopics,
+    liveVideo,
     elCol,
+    advertisementVue,
+    column,
+    schoolInformation,
   },
   name: "FetvPcHome",
-
   data() {
     return {
+      url: require("../../imges/82282d63-8d79-4046-9f02-46e60060f802.png"),
       list: [
         {
           src: require("../../imges/161b2574-dd97-490c-8a71-fcb8e7f11ac4.jpg"),
@@ -188,16 +191,9 @@ export default {
           src: "/NewsDetails?tid=13",
           switch: false,
         },
-        {
-          title: "纪录片《郑成功》今起在央视播出",
-          src: "/NewsDetails?tid=14",
-          switch: false,
-        },
       ],
     };
   },
-
-  mounted() {},
 
   methods: {
     toNews() {
@@ -274,8 +270,48 @@ export default {
   .right {
     width: 380px;
     height: 507px;
-    // background-color: pink;
 
+    .clearfix {
+      width: 380px;
+      height: 40px;
+      display: flex;
+      // justify-content: space-between;
+      line-height: 40px;
+    }
+
+    .head-text {
+      line-height: 25px;
+      // width: 64px;
+      font-size: 20px;
+      font-weight: 700;
+
+      .line {
+        margin-top: 11px;
+        background-color: #ba0825;
+        height: 4px;
+        width: 100%;
+      }
+    }
+
+    .head-mark {
+      width: 232px;
+      height: 40px;
+      display: flex;
+      justify-content: space-between;
+      margin-left: 45px;
+      font-size: 16px;
+      font-family: Noto Sans S Chinese;
+      font-weight: 300;
+      font-style: italic;
+      color: #777777;
+      line-height: 40px;
+
+      el-divider {
+        width: 90px;
+      }
+    }
+
+    // background-color: pink;
     .text {
       font-size: 14px;
       color: #000;
@@ -283,9 +319,9 @@ export default {
 
     .item {
       margin-top: 14px;
+
       // display: flex;
       // justify-items: center;
-
       img {
         width: 17px;
         // align-items: baseline

@@ -35,16 +35,16 @@
           router
         >
           <el-menu-item index="/">首页</el-menu-item>
-          <el-menu-item index="news?name=头条新闻">头条新闻</el-menu-item>
-          <el-menu-item index="news?name=要闻聚焦">要闻聚焦</el-menu-item>
-          <el-menu-item index="news?name=校园">校园</el-menu-item>
-          <el-menu-item index="news?name=FETV">FETV</el-menu-item>
-          <el-menu-item index="news?name=招考">招考</el-menu-item>
-          <el-menu-item index="news?name=空中课堂">空中课堂</el-menu-item>
-          <el-menu-item index="news?name=家长">家长</el-menu-item>
-          <el-menu-item index="news?name=师说">师说</el-menu-item>
-          <el-menu-item index="news?name=职场">职场</el-menu-item>
-          <el-menu-item index="news?name=微视频">微视频</el-menu-item>
+          <el-menu-item index="news?name=1">头条新闻</el-menu-item>
+          <el-menu-item index="news?name=2">要闻聚焦</el-menu-item>
+          <el-menu-item index="news?name=3">校园</el-menu-item>
+          <el-menu-item index="news?name=4">FETV</el-menu-item>
+          <el-menu-item index="news?name=5">招考</el-menu-item>
+          <el-menu-item index="news?name=6">空中课堂</el-menu-item>
+          <el-menu-item index="news?name=7">家长</el-menu-item>
+          <el-menu-item index="news?name=8">师说</el-menu-item>
+          <el-menu-item index="news?name=9">职场</el-menu-item>
+          <el-menu-item index="news?name=10">微视频</el-menu-item>
           <el-menu-item @click="visable = !visable">更多</el-menu-item>
         </el-menu>
       </div>
@@ -77,7 +77,6 @@ export default {
     // }
   },
   mounted() {},
-
   methods: {
     handleSelect(key, keyPath) {
       console.log(key, keyPath);
@@ -107,31 +106,26 @@ export default {
 .top {
   height: 191px;
 }
-
 .topnav {
   width: 100%;
   // background-image: url(https://www.fetv.cn/static/img/bg.a262cf3.png);
   background: url(https://www.fetv.cn/static/img/bg.a262cf3.png) no-repeat;
   background-position: right;
   height: 149px;
-
   .header-container {
     // background-color: cadetblue;
     margin: 0 auto;
     width: 1200px;
     height: 149px;
-
     .logo {
       width: 400px;
       height: 80px;
       margin-top: 35px;
     }
-
     .header-container-right {
       float: right;
       text-align: right;
     }
-
     .time {
       font-family: digifaw, serif;
       font-size: 24px;
@@ -140,25 +134,21 @@ export default {
       line-height: 20px;
       margin-top: 22px;
     }
-
     .date {
       font-size: 12px;
       margin-bottom: 30px;
     }
   }
-
   .NavMenu {
     // margin: 0px, 20px;
     // padding-left: 500px;
     background-color: #ba0825;
-
     .el-menu-demo {
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
     }
   }
-
   .more {
     display: flex;
     flex: 1;
@@ -168,7 +158,6 @@ export default {
     background-color: rgba(255, 248, 249, 0.95);
     font-size: 14px;
     color: #ba0825;
-
     div {
       cursor: pointer;
       line-height: 42px;
@@ -177,12 +166,10 @@ export default {
     }
   }
 }
-
 ::v-deep .el-input__inner {
   width: 200px;
   height: 42px;
 }
-
 ::v-deep .el-menu.el-menu--horizontal {
   // padding-left: 50px;
   width: 1200px;
@@ -190,7 +177,6 @@ export default {
   margin: 0px;
   border-bottom: none;
 }
-
 ::v-deep .el-menu--horizontal > .el-menu-item {
   height: 42px;
   line-height: 42px;
@@ -198,16 +184,13 @@ export default {
   font-size: 16px;
   font-weight: 800;
 }
-
 .el-menu--horizontal > .el-menu-item.is-active {
   border-bottom: none;
 }
-
 .el-menu::after,
 .el-menu::before {
   display: none;
 }
-
 @font-face {
   font-family: digifaw;
   src: url("../../common/font/digifaw.ttf");

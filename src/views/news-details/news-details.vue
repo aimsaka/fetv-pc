@@ -54,7 +54,6 @@ import breadCrumb from "../breadCrumb/breadCrumb.vue";
 import footerInformationVue from "../../Layout/footer-information/footer-information.vue";
 export default {
   name: "FetvPcNewsDetails",
-
   data() {
     return {
       detail: {
@@ -73,9 +72,6 @@ export default {
     breadCrumb,
     footerInformationVue,
   },
-
-  mounted() {},
-
   methods: {
     getAnother() {
       alert(111);
@@ -85,7 +81,7 @@ export default {
 </script>
 
 
-<style scoped lang="scss">
+<style lang="scss" scoped >
 .main {
   width: 1200px;
   margin: 0 auto;
@@ -102,7 +98,6 @@ export default {
     .publisher {
       position: relative;
       border-bottom: #f4f4f4 solid 1px;
-
       height: 88px;
       line-height: 88px;
       font-size: 14px;
@@ -165,7 +160,6 @@ export default {
         background-color: #b80e2a;
         margin-right: 10px;
       }
-
       .item_title {
         font-size: 16px;
         font-family: Noto Sans S Chinese;

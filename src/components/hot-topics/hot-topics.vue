@@ -17,7 +17,7 @@
             <el-image style="width: 383px; height: 214px" :src="item.src"></el-image>
           </div>
         </el-link>
-        <el-link :href="item.url" :underline="false" style="font-size: 18px;">
+        <el-link :href="item.url" :underline="false" style="font-size: 18px; font-weight: 600;">
           {{ item.title }}
         </el-link>
 
@@ -33,7 +33,6 @@ export default {
     layout
   },
   name: 'FetvPcHotTopics',
-
   data() {
     return {
       list: [{
@@ -93,7 +92,12 @@ export default {
   .block {
     // padding-left: 12.5px;
     padding-right: 25.5px;
-    cursor: pointer
+    cursor: pointer;
+
+    el-link {
+      font-weight: 700;
+      font-size: 20px;
+    }
   }
 
   .block:nth-child(3n) {
