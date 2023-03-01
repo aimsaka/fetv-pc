@@ -18,10 +18,7 @@
               <el-carousel-item v-for="(item, index) in list" :key="index">
                 <img :src="item.src" alt="" />
                 <div class="title">
-                  <span
-                    ><span>{{ index + 1 }}</span
-                    >/3</span
-                  >{{ item.title }}
+                  <span><span>{{ index + 1 }}</span>/3</span>{{ item.title }}
                 </div>
               </el-carousel-item>
             </el-carousel>
@@ -42,11 +39,7 @@
           </div>
           <!-- 右边栏新闻标题栏 -->
           <el-card class="box-card">
-            <div
-              v-for="(item, index) in newsList"
-              :key="index"
-              class="text item"
-            >
+            <div v-for="(item, index) in newsList" :key="index" class="text item">
               <!-- 第一栏显示 -->
               <el-link :href="item.src" target="_blank" :underline="false">
                 <div class="headline-news" v-if="index === 0">
@@ -54,18 +47,9 @@
                 </div>
               </el-link>
               <!-- 第二栏开始显示 -->
-              <el-link
-                :href="item.src"
-                target="_blank"
-                :underline="false"
-                v-if="index !== 0"
-              >
+              <el-link :href="item.src" target="_blank" :underline="false" v-if="index !== 0">
                 &nbsp;<span class="point"></span>&nbsp;
-                <img
-                  src="../../imges/shipin.png"
-                  alt=""
-                  v-if="item.switch"
-                />&nbsp;{{ item.title }}
+                <img src="../../imges/shipin.png" alt="" v-if="item.switch" />&nbsp;{{ item.title }}
               </el-link>
               <div class="more">
                 <div class="more-button" @click="toNews">更多内容</div>
@@ -85,6 +69,7 @@
       <advertisementVue></advertisementVue>
       <column class="w"></column>
       <schoolInformation class="x"></schoolInformation>
+      <miniVideo class="w"></miniVideo>
     </content>
   </div>
 </template>
@@ -94,9 +79,9 @@ import hotTopics from "../../components/hot-topics/hot-topics.vue";
 import liveVideo from "../../components/live-video/live-video.vue";
 import column from "../../components/column/column.vue";
 import schoolInformation from "../../components/school-information/school-information.vue";
-import elCol from "../../components/el-col/el-col.vue";
-
+import miniVideo from "../../components/mini-video/mini-video.vue";
 import advertisementVue from "../../components/advertisement/advertisement.vue";
+import elCol from "../../components/el-col/el-col.vue";
 export default {
   components: {
     hotTopics,
@@ -105,6 +90,7 @@ export default {
     advertisementVue,
     column,
     schoolInformation,
+    miniVideo
   },
   name: "FetvPcHome",
   data() {
@@ -426,6 +412,7 @@ export default {
 .news-details .right .clearfix[data-v-39f87be5]:before {
   display: none;
 }
+
 .news_container {
   width: 1200px;
   height: 1050;
@@ -434,8 +421,10 @@ export default {
   margin-top: 30px;
   justify-content: space-between;
   flex-wrap: wrap;
+
   .chopsticks {
     margin: 30px 0;
+
     img {
       width: 100%;
     }
