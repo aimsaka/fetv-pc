@@ -151,6 +151,7 @@ export default {
   }
   .news_right {
     width: 310px;
+    margin-top: 70px;
     .table {
       height: 40px;
       font-size: 22px;
