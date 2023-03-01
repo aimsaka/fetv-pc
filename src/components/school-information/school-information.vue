@@ -6,29 +6,32 @@
       <div class="layout left">
         <layout class="head">
           <template #title>
-            团校信息
+            院校信息
           </template>
           <template #describe>
             展现校园风采 传承大学之道
           </template>
         </layout>
+        <!-- 左边栏内容 -->
         <el-carousel height="480px" indicator-position="none">
           <el-carousel-item>
             <div class="school" v-for="item in list" :key="item.src">
-              <div class="item">
-                <span>
-                  <el-image style="width: 248px; height: 141px" :src="item.src"></el-image>
-                </span>
-                <span style="width: 317px;">
-                  <div class="name">
-                    <div>{{ item.name }}</div>
-                    <div class="button"><i class="el-icon-arrow-right"></i></div>
-                  </div>
-                  <el-divider class="line"></el-divider>
-                  <div class="text">{{ item.title }}</div>
-                </span>
+              <el-link :underline="false" href="https://element.eleme.io" target="_blank">
+                <div class="item">
+                  <span>
+                    <el-image style="width: 248px; height: 141px" :src="item.src"></el-image>
+                  </span>
+                  <span style="width: 317px;">
+                    <div class="name">
+                      <div>{{ item.name }}</div>
+                      <div class="button"><i class="el-icon-arrow-right"></i></div>
+                    </div>
+                    <el-divider class="line"></el-divider>
+                    <div class="text">{{ item.title }}</div>
+                  </span>
 
-              </div>
+                </div>
+              </el-link>
             </div>
           </el-carousel-item>
         </el-carousel>
