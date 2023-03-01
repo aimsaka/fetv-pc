@@ -4,15 +4,9 @@
     <header>
       <!-- 头条大字 -->
       <div class="headline">
-        <div class="head-text">
-          福建省召开国家 “双高计划” 建设工作推进会
-        </div>
-        <div>
-          省委教育工委、省教育厅开展春季学期开学专项督导
-        </div>
-        <div>
-          第二届中国基础教育论坛暨中国教育学会第三十四次学术年会召开
-        </div>
+        <div class="head-text">福建省召开国家 “双高计划” 建设工作推进会</div>
+        <div>省委教育工委、省教育厅开展春季学期开学专项督导</div>
+        <div>第二届中国基础教育论坛暨中国教育学会第三十四次学术年会召开</div>
       </div>
       <!-- 新闻栏目 -->
       <div class="news-details">
@@ -22,8 +16,10 @@
           <div class="block">
             <el-carousel height="507px" width="806px" indicator-position="none">
               <el-carousel-item v-for="(item, index) in list" :key="index">
-                <img :src=item.src alt="">
-                <div class="title"><span><span>{{ index + 1 }}</span>/3</span>{{ item.title }}</div>
+                <img :src="item.src" alt="" />
+                <div class="title">
+                  <span><span>{{ index + 1 }}</span>/3</span>{{ item.title }}
+                </div>
               </el-carousel-item>
             </el-carousel>
           </div>
@@ -40,39 +36,41 @@
               <el-divider></el-divider>
               <div>每日最新教育资讯</div>
             </div>
-
           </div>
           <!-- 右边栏新闻标题栏 -->
           <el-card class="box-card">
             <div v-for="(item, index) in newsList" :key="index" class="text item">
               <!-- 第一栏显示 -->
               <el-link :href="item.src" target="_blank" :underline="false">
-                <div class="headline-news" v-if="index === 0"> <img src="../../imges/新.png" />{{ item.title }}</div>
+                <div class="headline-news" v-if="index === 0">
+                  <img src="../../imges/新.png" />{{ item.title }}
+                </div>
               </el-link>
               <!-- 第二栏开始显示 -->
               <el-link :href="item.src" target="_blank" :underline="false" v-if="index !== 0">
-                &nbsp;<span class="point"></span>&nbsp; <img src="../../imges/shipin.png" alt=""
-                  v-if="item.switch">&nbsp;{{ item.title }}
+                &nbsp;<span class="point"></span>&nbsp;
+                <img src="../../imges/shipin.png" alt="" v-if="item.switch" />&nbsp;{{ item.title }}
               </el-link>
               <div class="more">
                 <div class="more-button" @click="toNews">更多内容</div>
               </div>
             </div>
-
           </el-card>
         </div>
       </div>
     </header>
     <!-- 内容 -->
+
     <content>
+      <advertisementVue :advertisement="url"></advertisementVue>
       <hotTopics class="w"></hotTopics>
       <liveVideo class="w"></liveVideo>
+      <elCol></elCol>
+      <advertisementVue></advertisementVue>
       <column class="w"></column>
       <schoolInformation class="x"></schoolInformation>
       <miniVideo class="w"></miniVideo>
     </content>
-
-
   </div>
 </template>
 
@@ -82,109 +80,111 @@ import liveVideo from "../../components/live-video/live-video.vue";
 import column from "../../components/column/column.vue";
 import schoolInformation from "../../components/school-information/school-information.vue";
 import miniVideo from "../../components/mini-video/mini-video.vue";
+import advertisementVue from "../../components/advertisement/advertisement.vue";
+import elCol from "../../components/el-col/el-col.vue";
 export default {
   components: {
     hotTopics,
     liveVideo,
+    elCol,
+    advertisementVue,
     column,
     schoolInformation,
     miniVideo
   },
-  name: 'FetvPcHome',
+  name: "FetvPcHome",
   data() {
     return {
-      list: [{
-        src: require('../../imges/161b2574-dd97-490c-8a71-fcb8e7f11ac4.jpg'),
-        title: '大雾弥漫宛如仙境 福建福州化身“天空之城”'
-      },
-      {
-        src: require('../../imges/b986c848-6565-4abf-8402-a7acb7838268.jpg'),
-        title: '福州：春暖花开 出游正当时'
-      },
-      {
-        src: require('../../imges/d9aea775-eaa2-4ded-9261-be3ae08374b6.jpg'),
-        title: '福建宁化：千亩李花怒放 绘就春日“雪景图”'
-      }],
+      url: require("../../imges/82282d63-8d79-4046-9f02-46e60060f802.png"),
+      list: [
+        {
+          src: require("../../imges/161b2574-dd97-490c-8a71-fcb8e7f11ac4.jpg"),
+          title: "大雾弥漫宛如仙境 福建福州化身“天空之城”",
+        },
+        {
+          src: require("../../imges/b986c848-6565-4abf-8402-a7acb7838268.jpg"),
+          title: "福州：春暖花开 出游正当时",
+        },
+        {
+          src: require("../../imges/d9aea775-eaa2-4ded-9261-be3ae08374b6.jpg"),
+          title: "福建宁化：千亩李花怒放 绘就春日“雪景图”",
+        },
+      ],
+
       newsList: [
         {
-          title: '省关工委2023年全体委员会议召开',
-          src: '/NewsDetails?tid=1',
-          switch: false
+          title: "省关工委2023年全体委员会议召开",
+          src: "/NewsDetails?tid=1",
+          switch: false,
         },
         {
-          title: '厦门理工学院：“三度提升”推进党的二十大精神走深走实',
-          src: '/NewsDetails?tid=2',
-          switch: false
+          title: "厦门理工学院：“三度提升”推进党的二十大精神走深走实",
+          src: "/NewsDetails?tid=2",
+          switch: false,
         },
         {
-          title: '今起可打印准考证！本周六，福建省公务员考试开考',
-          src: '/NewsDetails?tid=3',
-          switch: true
+          title: "今起可打印准考证！本周六，福建省公务员考试开考",
+          src: "/NewsDetails?tid=3",
+          switch: true,
         },
         {
-          title: '福建启动职业院校教师素质提高三年行动计划',
-          src: '/NewsDetails?tid=4',
-          switch: false
+          title: "福建启动职业院校教师素质提高三年行动计划",
+          src: "/NewsDetails?tid=4",
+          switch: false,
         },
         {
-          title: '劳动光荣 声动校园',
-          src: '/NewsDetails?tid=5',
-          switch: false
+          title: "劳动光荣 声动校园",
+          src: "/NewsDetails?tid=5",
+          switch: false,
         },
         {
-          title: '《中国大百科全书》第三版集中发布',
-          src: '/NewsDetails?tid=6',
-          switch: true
+          title: "《中国大百科全书》第三版集中发布",
+          src: "/NewsDetails?tid=6",
+          switch: true,
         },
         {
-          title: '吴敏婕委员：当好传播中华文化艺术的使者',
-          src: '/NewsDetails?tid=7',
-          switch: true
+          title: "吴敏婕委员：当好传播中华文化艺术的使者",
+          src: "/NewsDetails?tid=7",
+          switch: true,
         },
         {
-          title: '福州格致中学：推动资源融合应用 打造立德树人新课堂',
-          src: '/NewsDetails?tid=8',
-          switch: true
+          title: "福州格致中学：推动资源融合应用 打造立德树人新课堂",
+          src: "/NewsDetails?tid=8",
+          switch: true,
         },
         {
-          title: '福建规定8种类型学生可确认为家庭经济困难',
-          src: '/NewsDetails?tid=9',
-          switch: false
+          title: "福建规定8种类型学生可确认为家庭经济困难",
+          src: "/NewsDetails?tid=9",
+          switch: false,
         },
         {
-          title: '《福建省家庭经济困难学生认定办法》印发',
-          src: '/NewsDetails?tid=10',
-          switch: true
+          title: "《福建省家庭经济困难学生认定办法》印发",
+          src: "/NewsDetails?tid=10",
+          switch: true,
         },
         {
-          title: '纪录片《郑成功》今起在央视播出',
-          src: '/NewsDetails?tid=11',
-          switch: false
+          title: "纪录片《郑成功》今起在央视播出",
+          src: "/NewsDetails?tid=11",
+          switch: false,
         },
         {
-          title: '纪录片《郑成功》今起在央视播出',
-          src: '/NewsDetails?tid=12',
-          switch: false
+          title: "纪录片《郑成功》今起在央视播出",
+          src: "/NewsDetails?tid=12",
+          switch: false,
         },
         {
-          title: '纪录片《郑成功》今起在央视播出',
-          src: '/NewsDetails?tid=13',
-          switch: false
+          title: "纪录片《郑成功》今起在央视播出",
+          src: "/NewsDetails?tid=13",
+          switch: false,
         },
-        {
-          title: '纪录片《郑成功》今起在央视播出',
-          src: '/NewsDetails?tid=14',
-          switch: false
-        }
-      ]
+      ],
     };
   },
-  mounted() {
-  },
+
   methods: {
     toNews() {
       console.log(1);
-    }
+    },
   },
 };
 </script>
@@ -322,7 +322,7 @@ export default {
     }
 
     .clearfix:after {
-      clear: both
+      clear: both;
     }
 
     .box-card {
@@ -405,11 +405,29 @@ export default {
   background-color: #99a9bf;
 }
 
-.el-carousel__item:nth-child(2n+1) {
+.el-carousel__item:nth-child(2n + 1) {
   background-color: #d3dce6;
 }
 
 .news-details .right .clearfix[data-v-39f87be5]:before {
   display: none;
+}
+
+.news_container {
+  width: 1200px;
+  height: 1050;
+  margin: 0 auto;
+  display: flex;
+  margin-top: 30px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  .chopsticks {
+    margin: 30px 0;
+
+    img {
+      width: 100%;
+    }
+  }
 }
 </style>

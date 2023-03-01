@@ -8,7 +8,10 @@
     <div class="main">
       <div class="news_left">
         <!-- 面包屑 -->
-        <breadCrumb class="breadCrumb" :message="{ path: 'news?name=头条新闻', title: '头条新闻' }"></breadCrumb>
+        <breadCrumb
+          class="breadCrumb"
+          :message="{ path: 'news?name=头条新闻', title: '头条新闻' }"
+        ></breadCrumb>
         <div class="title">
           {{ this.detail.title }}
         </div>
@@ -51,7 +54,6 @@ import breadCrumb from "../breadCrumb/breadCrumb.vue";
 import footerInformationVue from "../../Layout/footer-information/footer-information.vue";
 export default {
   name: "FetvPcNewsDetails",
-
   data() {
     return {
       detail: {
@@ -70,7 +72,6 @@ export default {
     breadCrumb,
     footerInformationVue,
   },
-
   methods: {
     getAnother() {
       alert(111);
@@ -85,44 +86,36 @@ export default {
   width: 1200px;
   margin: 0 auto;
   display: flex;
-
   .news_left {
     width: 830px;
     margin-top: 15px;
-
     .title {
       height: 80px;
       font-size: 30px;
       line-height: 40px;
       font-weight: 700;
     }
-
     .publisher {
       position: relative;
       border-bottom: #f4f4f4 solid 1px;
-
       height: 88px;
       line-height: 88px;
       font-size: 14px;
       color: #666666;
-
       img {
         position: absolute;
         right: 15px;
         bottom: 25px;
       }
     }
-
     .content {
       height: 800px;
       background-color: skyblue;
     }
   }
-
   .news_right {
     width: 310px;
     margin: 60px 0 0 60px;
-
     .account {
       height: 230px;
       display: flex;
@@ -130,35 +123,29 @@ export default {
       justify-content: center;
       align-items: center;
       border: 1px #f4f4f4 solid;
-
       .logo {
         width: 85px;
         height: 85px;
         border-radius: 50%;
         border: #f4f4f4 solid 1px;
         text-align: center;
-
         img {
           margin-top: 15px;
           width: 80%;
         }
       }
-
       .name {
         padding: 15px 0;
         font-weight: 700;
       }
     }
-
     .recommend {
       margin-top: 60px;
-
       span {
         padding: 0 10px;
         font-size: 20px;
       }
     }
-
     .news_list_item {
       height: 50px;
       line-height: 50px;
@@ -166,7 +153,6 @@ export default {
       flex: 1;
       align-items: center;
       border-bottom: #f4f4f4 solid 1px;
-
       .icon {
         width: 6px;
         height: 6px;
@@ -174,7 +160,6 @@ export default {
         background-color: #b80e2a;
         margin-right: 10px;
       }
-
       .item_title {
         font-size: 16px;
         font-family: Noto Sans S Chinese;
@@ -186,7 +171,6 @@ export default {
         text-overflow: ellipsis;
       }
     }
-
     .more {
       text-align: center;
       font-family: NotoSansHans-Regular;

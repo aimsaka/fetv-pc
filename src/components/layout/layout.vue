@@ -18,7 +18,7 @@
       </div>
 
       <div class="button">
-        <div class="more-button">更多内容</div>
+        <div class="more-button">查看更多</div>
       </div>
     </div>
   </div>
@@ -26,21 +26,15 @@
 
 <script>
 export default {
-  name: 'FetvPcLayout',
+  name: "FetvPcLayout",
 
   data() {
-    return {
-
-    };
+    return {};
   },
 
-  mounted() {
+  mounted() {},
 
-  },
-
-  methods: {
-
-  },
+  methods: {},
 };
 </script>
 
