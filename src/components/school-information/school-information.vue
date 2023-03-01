@@ -1,6 +1,6 @@
 <template>
   <div>
-    院校模块
+    <!-- 院校模块 -->
     <div class="w content">
       <!-- 左边栏 -->
       <div class="layout left">
@@ -43,6 +43,20 @@
             云教学 让知识传播更广泛
           </template>
         </layout>
+        <div class="classroom">
+          <div class="img-item">
+            <div v-for="item in teacher" :key="item.src">
+              <el-image style="width: 270px; height: 150px; margin-left: 15px;" :src="item.src"></el-image>
+            </div>
+          </div>
+          <div class="link-box">
+            <div class="link" v-for="item in teacher" :key="item.src">
+              {{ item.title }}
+              <div class="circle"></div>
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
   </div>
@@ -79,6 +93,24 @@ export default {
           name: "泉州工程职业技术学院",
           title: '大雾弥漫宛如仙境 福建福州化身“天空之城阿巴阿巴阿巴阿巴阿巴”'
         },
+      ],
+      teacher: [
+        {
+          src: require('../../imges/3c81b3cd-564d-4cde-9d10-a51effa3e904.png'),
+          title: '大雾弥漫宛如仙境 福建福州化身“天空之城”'
+        },
+        {
+          src: require('../../imges/4f194a67-07d1-4006-80d2-885f41b06fac.png'),
+          title: '大雾弥漫宛如仙境 福建福州化身“天空之城”'
+        },
+        {
+          src: require('../../imges/4b3a023b-a39e-4d65-aea2-f8108a360e94.png'),
+          title: '大雾弥漫宛如仙境 福建福州化身“天空之城 大雾弥漫宛如仙境 福建福州化身“天空之城大雾弥漫宛如仙境 福建福州化身“天空之城”'
+        },
+        {
+          src: require('../../imges/e6b38618-99f7-4102-9d6a-437ae241bc75.png'),
+          title: '大雾弥漫宛如仙境 福建福州化身“天空之城”'
+        },
       ]
     };
   },
@@ -104,13 +136,13 @@ export default {
 
   }
 
+  .head {
+    margin-bottom: 45px;
+  }
+
   .left {
+
     // background-color: pink;
-
-    .head {
-      margin-bottom: 45px;
-    }
-
     .school {
       height: 155px;
 
@@ -180,7 +212,55 @@ export default {
   }
 
   .right {
-    background-color: skyblue;
+    // background-color: skyblue;
+
+    .classroom {
+      // .img {
+      width: 100%;
+      height: 451px;
+      padding-top: 10px;
+      background-color: rgb(255, 255, 255);
+
+      .img-item {
+        width: 584px;
+        height: 315px;
+        display: flex;
+        flex-wrap: wrap;
+
+      }
+
+      .link-box {
+        height: 127px;
+        overflow: hidden;
+
+        .link {
+          width: 400px;
+          padding-left: 30px;
+          line-height: 40px;
+          position: relative;
+          font-size: 15px;
+          font-weight: 700;
+          overflow: hidden;
+          /* 隐藏溢出的内容 */
+          white-space: nowrap;
+          /* 阻止文本换行 */
+          text-overflow: ellipsis;
+
+          .circle {
+            position: absolute;
+            top: 15px;
+            left: 13px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            border: 1px solid gray;
+          }
+        }
+      }
+
+
+      // }
+    }
   }
 }
 </style>
