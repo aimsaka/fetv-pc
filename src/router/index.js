@@ -17,16 +17,19 @@ const router =new VueRouter({
       redirect: '/home',
       children:[
         {
+          // 首页
           path:'/home',
           component:home,
         },
         {
+          // 新闻列表
           path:'/news',
           component:news,
         }
       ]
     },
     {
+      // 新闻详情
       path:'/newsDetails',
       component:newsDetails,
     }

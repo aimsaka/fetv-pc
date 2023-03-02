@@ -82,6 +82,7 @@ import schoolInformation from "../../components/school-information/school-inform
 import miniVideo from "../../components/mini-video/mini-video.vue";
 import advertisementVue from "../../components/advertisement/advertisement.vue";
 import elCol from "../../components/el-col/el-col.vue";
+import { queryNewInformation } from "../../api/information";
 export default {
   components: {
     hotTopics,
@@ -185,7 +186,18 @@ export default {
     toNews() {
       console.log(1);
     },
+    async gitNewsList() {
+      try {
+        const res = await queryNewInformation("1", "10")
+        console.log(res);
+      } catch (error) {
+        console.log(error)
+      }
+    },
   },
+  created() {
+    this.gitNewsList()
+  }
 };
 </script>
 

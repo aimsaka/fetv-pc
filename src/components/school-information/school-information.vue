@@ -16,7 +16,7 @@
         <el-carousel height="480px" indicator-position="none">
           <el-carousel-item>
             <!-- 循环渲染的盒子 -->
-            <div class="school" v-for="item in list" :key="item.src">
+            <div class="school" v-for="(item, index) in list" :key="index">
               <!-- 链接 -->
               <el-link :underline="false" href="https://element.eleme.io" target="_blank">
                 <div class="item">
@@ -60,7 +60,7 @@
           </div>
           <div class="link-box">
 
-            <div class="link" v-for="item in teacher" :key="item.src">
+            <div class="link" v-for="(item, index) in teacher" :key="index">
               <el-link :underline="false" href="https://element.eleme.io" target="_blank">
                 {{ item.title }}
                 <div class="circle"></div>
