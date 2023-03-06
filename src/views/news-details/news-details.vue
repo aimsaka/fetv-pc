@@ -25,11 +25,12 @@
       <!-- 右边表格 -->
       <div class="news_right">
         <!-- 来源 -->
-        <div class="account">
+        <!-- <div class="account">
           <div class="logo"><img src="../../imges/logo.png" alt="" /></div>
           <div class="name">福建教育网</div>
           <div class="text">福建教育电视台主办</div>
-        </div>
+        </div> -->
+        <rightLogo></rightLogo>
         <!-- 推荐 -->
         <div class="recommend">
           <span> 其他推荐 </span>
@@ -52,6 +53,7 @@
 import topnav from "../../Layout/topnav/topnav.vue";
 import breadCrumb from "../breadCrumb/breadCrumb.vue";
 import footerInformationVue from "../../Layout/footer-information/footer-information.vue";
+import rightLogo from "../../components/right-logo/right-logo.vue";
 export default {
   name: "FetvPcNewsDetails",
   data() {
@@ -71,6 +73,7 @@ export default {
     topnav,
     breadCrumb,
     footerInformationVue,
+    rightLogo,
   },
   methods: {
     getAnother() {
@@ -116,29 +119,7 @@ export default {
   .news_right {
     width: 310px;
     margin: 60px 0 0 60px;
-    .account {
-      height: 230px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      border: 1px #f4f4f4 solid;
-      .logo {
-        width: 85px;
-        height: 85px;
-        border-radius: 50%;
-        border: #f4f4f4 solid 1px;
-        text-align: center;
-        img {
-          margin-top: 15px;
-          width: 80%;
-        }
-      }
-      .name {
-        padding: 15px 0;
-        font-weight: 700;
-      }
-    }
+
     .recommend {
       margin-top: 60px;
       span {
