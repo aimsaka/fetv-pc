@@ -11,7 +11,7 @@
 
     <div class="content">
       <div class="item" v-for="item in list" :key="item.src">
-        <el-link :underline="false" href="https://element.eleme.io" target="_blank">
+        <el-link :underline="false" :href="'/ClassVideo?tid=' + item.informationId" target="_blank">
           <el-image style="width: 383px; height: 214px; margin-left: 15px;" :src="item.image"></el-image>
         </el-link>
         <el-link :underline="false" href="https://element.eleme.io" target="_blank">
@@ -43,18 +43,19 @@ export default {
   },
 
   methods: {
-    async schoolList() {
+    // 获取微视频数据列表
+    async getminiVideoImage() {
       try {
         const res = await miniVideoImage("1")
-        // console.log(res.rows[0].informationApiList);
         this.list = res.rows[0].informationApiList
+        console.log(this.list);
       } catch (error) {
         console.log(error)
       }
     },
   },
   created() {
-    this.schoolList()
+    this.getminiVideoImage()
   }
 
 };

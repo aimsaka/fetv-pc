@@ -7,6 +7,8 @@ import home from "../views/home/home.vue";
 import news from "../views/news/news.vue";
 //文章详情页 
 import newsDetails from "../views/news-details/news-details.vue";
+// 微视频详情
+import ClassVideo from "../views/classVideo/classVideo.vue"
 
 Vue.use(VueRouter)
 const router = new VueRouter({
@@ -37,6 +39,11 @@ const router = new VueRouter({
       // 学校详情
       path: '/Introduction',
       component: () => import('../views/school-detail/school-detail')
+    },
+    {
+      // 视频详情
+      path: '/ClassVideo',
+      component: ClassVideo,
     }
   ],
   mode: 'history'
