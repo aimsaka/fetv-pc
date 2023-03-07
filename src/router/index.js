@@ -9,38 +9,43 @@ import news from "../views/news/news.vue";
 import newsDetails from "../views/news-details/news-details.vue";
 
 Vue.use(VueRouter)
-const router =new VueRouter({
-  routes : [
+const router = new VueRouter({
+  routes: [
     {
-      path:'/',
-      component:Layout,
+      path: '/',
+      component: Layout,
       redirect: '/home',
-      children:[
+      children: [
         {
           // 首页
-          path:'/home',
-          component:home,
+          path: '/home',
+          component: home,
         },
         {
           // 新闻列表
-          path:'/news',
-          component:news,
+          path: '/news',
+          component: news,
         }
       ]
     },
     {
       // 新闻详情
-      path:'/newsDetails',
-      component:newsDetails,
+      path: '/newsDetails',
+      component: newsDetails,
+    },
+    {
+      // 学校详情
+      path: '/Introduction',
+      component: () => import('../views/school-detail/school-detail')
     }
   ],
-  mode:'history'
+  mode: 'history'
 })
 //阻止跳转同一个路径网页报错
 const VueRouterPush = VueRouter.prototype.push
-VueRouter.prototype.push = function push (to) {
+VueRouter.prototype.push = function push(to) {
   return VueRouterPush.call(this, to).catch(err => err)
 }
 
-export default router 
+export default router
 

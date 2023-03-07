@@ -18,7 +18,7 @@
         "
       >
         <div class="title">{{ description[0].title }}</div>
-        <div class="time">{{ description[0].publishTime }}</div>
+        <div class="time">{{ description[0].createTime }}</div>
       </div>
       <div class="block">
         <el-pagination layout="prev, pager, next" :total="1000">
@@ -42,59 +42,56 @@
 
 <script>
 import breadCrumb from "../breadCrumb/breadCrumb.vue";
+import { queryNewInformationListAPI } from "../../api";
 export default {
   name: "FetvPcHeadLinenews",
   data() {
     return {
-      description: [
-        {
-          title:
-            "习近平：深刻把握雷锋精神的时代内涵 让雷锋精神在新时代绽放更加璀璨的光芒",
-          publishTime: "2023-02-24 09:38:59",
-          tid: 24487,
-        },
-        {
-          title:
-            "习近平：深刻把握雷锋精神的时代内涵 让雷锋精神在新时代绽放更加璀璨的光芒",
-          publishTime: "2023-02-24 09:38:59",
-          tid: 24488,
-        },
-        {
-          title:
-            "习近平：深刻把握雷锋精神的时代内涵 让雷锋精神在新时代绽放更加璀璨的光芒",
-          publishTime: "2023-02-24 09:38:59",
-          tid: 24489,
-        },
-        {
-          title:
-            "习近平：深刻把握雷锋精神的时代内涵 让雷锋精神在新时代绽放更加璀璨的光芒",
-          publishTime: "2023-02-24 09:38:59",
-          tid: 24490,
-        },
-        {
-          title:
-            "习近平：深刻把握雷锋精神的时代内涵 让雷锋精神在新时代绽放更加璀璨的光芒",
-          publishTime: "2023-02-24 09:38:59",
-          tid: 24491,
-        },
-        {
-          title:
-            "习近平：深刻把握雷锋精神的时代内涵 让雷锋精神在新时代绽放更加璀璨的光芒",
-          publishTime: "2023-02-24 09:38:59",
-          tid: 24492,
-        },
-      ],
+      description: [],
     };
   },
   components: {
     breadCrumb,
   },
-  mounted() {},
-  created() {
-    console.log(this.$route.query.name);
+  computed: {
+    type() {
+      return this.$route.query.name;
+    },
   },
-
-  methods: {},
+  mounted() {
+    this.load(this.type);
+  },
+  created() {},
+  watch: {
+    type(newVal, oldVal) {
+      console.log(newVal, oldVal);
+      if (newVal != oldVal) {
+        this.load(newVal);
+      }
+    },
+  },
+  methods: {
+    async load(type) {
+      let list = [
+        "",
+        "头条新闻",
+        "要闻聚焦",
+        "校园",
+        "FETV",
+        "招考",
+        "空中课堂",
+        "家长",
+        "师说",
+        "职场",
+        "微视频",
+        "直播访谈",
+        "福建教育报道",
+      ];
+      let index = list.indexOf(type);
+      const res = await queryNewInformationListAPI(index);
+      this.description = res.rows[0].informationApiList;
+    },
+  },
 };
 </script>
 
