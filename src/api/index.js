@@ -1,2 +1,2 @@
-import { queryNewInformation } from "./information";
-export const queryNewInformationAPI = queryNewInformation
+import { queryNewInformationList } from "./news";
+export const queryNewInformationListAPI = queryNewInformationList

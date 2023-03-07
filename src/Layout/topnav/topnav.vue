@@ -13,26 +13,38 @@
                 {{ time }}
               </p>
               <div class="date">{{ date }} {{ dey }}</div>
-              <el-input v-model="input" placeholder="搜索" prefix-icon="el-icon-search"></el-input>
+              <el-input
+                v-model="input"
+                placeholder="搜索"
+                prefix-icon="el-icon-search"
+              ></el-input>
             </div>
           </el-col>
         </el-row>
       </div>
       <!-- 导航栏 -->
       <div class="NavMenu">
-        <el-menu :default-active="activeIndex2" class="el-menu-demo" mode="horizontal" @select="handleSelect"
-          background-color="#ba0825" text-color="#ffdcab" active-text-color="#fff" router>
+        <el-menu
+          :default-active="activeIndex2"
+          class="el-menu-demo"
+          mode="horizontal"
+          @select="handleSelect"
+          background-color="#ba0825"
+          text-color="#ffdcab"
+          active-text-color="#fff"
+          router
+        >
           <el-menu-item index="/">首页</el-menu-item>
-          <el-menu-item index="news?name=1">头条新闻</el-menu-item>
-          <el-menu-item index="news?name=2">要闻聚焦</el-menu-item>
-          <el-menu-item index="news?name=3">校园</el-menu-item>
-          <el-menu-item index="news?name=4">FETV</el-menu-item>
-          <el-menu-item index="news?name=5">招考</el-menu-item>
-          <el-menu-item index="news?name=6">空中课堂</el-menu-item>
-          <el-menu-item index="news?name=7">家长</el-menu-item>
-          <el-menu-item index="news?name=8">师说</el-menu-item>
-          <el-menu-item index="news?name=9">职场</el-menu-item>
-          <el-menu-item index="news?name=10">微视频</el-menu-item>
+          <el-menu-item index="news?name=头条新闻">头条新闻</el-menu-item>
+          <el-menu-item index="news?name=要闻聚焦">要闻聚焦</el-menu-item>
+          <el-menu-item index="news?name=校园">校园</el-menu-item>
+          <el-menu-item index="news?name=FETV">FETV</el-menu-item>
+          <el-menu-item index="news?name=招考">招考</el-menu-item>
+          <el-menu-item index="news?name=空中课堂">空中课堂</el-menu-item>
+          <el-menu-item index="news?name=家长">家长</el-menu-item>
+          <el-menu-item index="news?name=师说">师说</el-menu-item>
+          <el-menu-item index="news?name=职场">职场</el-menu-item>
+          <el-menu-item index="news?name=微视频">微视频</el-menu-item>
           <el-menu-item @click="visable = !visable">更多</el-menu-item>
         </el-menu>
       </div>
@@ -64,11 +76,9 @@ export default {
     //   return this.a + this.b
     // }
   },
-  mounted() { },
+  mounted() {},
   methods: {
-    handleSelect(key, keyPath) {
-      console.log(key, keyPath);
-      console.log(key);
+    handleSelect(key) {
       if (key != null) {
         this.visable = false;
       }
@@ -117,8 +127,6 @@ export default {
     .header-container-right {
       float: right;
       text-align: right;
-
-
     }
 
     .time {
@@ -180,7 +188,7 @@ export default {
   border-bottom: none;
 }
 
-::v-deep .el-menu--horizontal>.el-menu-item {
+::v-deep .el-menu--horizontal > .el-menu-item {
   height: 42px;
   line-height: 42px;
   border-bottom: none;
@@ -192,7 +200,7 @@ export default {
   border-color: #ba0825;
 }
 
-.el-menu--horizontal>.el-menu-item.is-active {
+.el-menu--horizontal > .el-menu-item.is-active {
   border-bottom: none;
 }
 
