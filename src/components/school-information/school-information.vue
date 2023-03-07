@@ -12,31 +12,32 @@
         <el-carousel height="480px" indicator-position="none">
           <el-carousel-item>
             <!-- 循环渲染的盒子 -->
-            <div class="school" v-for="(item, index) in list" :key="index">
+            <div
+              class="school"
+              v-for="item in list"
+              :key="item.schoolId"
+              @click="go(item.schoolId)"
+            >
               <!-- 链接 -->
-              <el-link
-                :underline="false"
-                @click="go(item.schoolId)"
-                target="_blank"
-              >
+              <el-link :underline="false" target="_blank">
                 <div class="item">
                   <span>
                     <!-- 图片部分 -->
                     <el-image
                       style="width: 248px; height: 141px"
-                      :src="item.src"
+                      :src="item.firstImage"
                     ></el-image>
                   </span>
                   <span style="width: 317px">
                     <!-- 文字部分 -->
                     <div class="name">
-                      <div>{{ item.name }}</div>
+                      <div>{{ item.schoolName }}</div>
                       <div class="button">
                         <i class="el-icon-arrow-right"></i>
                       </div>
                     </div>
                     <el-divider class="line"></el-divider>
-                    <div class="text">{{ item.title }}</div>
+                    <div class="text">{{ item.schoolAddress }}</div>
                   </span>
                 </div>
               </el-link>
@@ -85,6 +86,7 @@
 
 <script>
 import layout from "../layout/layout.vue";
+import { schoolListAPI } from "../../api";
 export default {
   components: {
     layout,
@@ -93,30 +95,7 @@ export default {
 
   data() {
     return {
-      list: [
-        {
-          src: require("../../imges/9475c5ea-2cc5-4ecf-9375-08d8d9e8abb3.png"),
-          name: "泉州工程职业技术学院",
-          title: `泉州工程职业技术学院于2013年11月经福建省人民政府批准设立。学校由南安市属国有企业泉州市南翼置业发展集团有限责任公司全资子公司南安市宏翔教育投资有限公司举办。南翼集团下辖宏翔教育投资有限公司、南安城建集团等17家子公司，总资产约187亿元，形成以房地产开发、教育产业投资经营、港务码头建设经营、文化旅游、供应链金融、医疗康养产业投资运营、物业管理、城市综合开发等八大主要业务板块，可为学生提供广阔实习、实训平台及就业渠道
-  学校坐落于海上丝绸之路起点、中国著名侨乡南安市，依山傍水，风光旖旎，校区现有占地面积350多亩，建有教学楼、办公楼、图书馆、实验室、实训楼、学生宿舍楼、教师公寓、食堂共8.3万平方米。优美的校园环境，一流的教学设施，吸引了广大莘莘学子到学校求学。南翼集团将继续加大投入，进一步改善教学、科研、学习和生活条件，形成功能突出、实践研发基地定位明确的校园功能布局。
-  学校充分发挥毗邻福建最大的光电信息产业基地、机械装备制造基地、成辉国际电商园等区位优势，先后与泉州、南安市近100家企业建立校企合作关系，搭建了广阔的毕业生就业合作平台。学校还积极引进优质的教育教学资源，与国内知名企业签订了“产学研用创”合作协议，进一步提升了学校的办学水平。
-学校实施人才强校和特色兴校战略，致力构建一支素质优良、结构合理、爱岗敬业、专兼结合的“双师型”教师队伍，为每个专业配备两名副高职称以上和企业技术骨干的专业带头人，以及多名中级职称以上的“双师型”专业骨干教师，学生不仅获得坚实的理论知识，还可得到丰富的实践训练。
-学校目前设有汽车工程系、机械工程系、建筑工程系、经济管理系、信息工程系、航空旅游系等六个系，开设有空中乘务、飞机机电设备维修、人工智能技术应用、软件技术、大数据技术、工业机器人技术、机电一体化技术、汽车制造与试验技术、大数据与财务管理、建设工程管理、建筑装饰工程技术、药品经营与管理等12个专科专业。随着办学规模不断发展壮大，学校将持续优化专业结构设置，有效对接区域经济社会发展。`,
-          schoolId: 1,
-        },
-        {
-          src: require("../../imges/9475c5ea-2cc5-4ecf-9375-08d8d9e8abb3.png"),
-          name: "泉州工程职业技术学院",
-          title: "大雾弥漫宛如仙境 福建福州化身“天空之城阿巴阿巴阿巴阿巴阿巴”",
-          schoolIdL: 2,
-        },
-        {
-          src: require("../../imges/9475c5ea-2cc5-4ecf-9375-08d8d9e8abb3.png"),
-          name: "泉州工程职业技术学院",
-          title: "大雾弥漫宛如仙境 福建福州化身“天空之城阿巴阿巴阿巴阿巴阿巴”",
-          schoolId: 3,
-        },
-      ],
+      list: [],
       teacher: [
         {
           src: require("../../imges/3c81b3cd-564d-4cde-9d10-a51effa3e904.png"),
@@ -138,15 +117,31 @@ export default {
       ],
     };
   },
+  async created() {
+    const res = await schoolListAPI();
 
+    this.list = this.addFile(res.rows);
+
+    console.log(this.list, "333");
+  },
   mounted() {},
 
   methods: {
-    go(id) {
+    go(schoolId) {
       this.$router.push({
         path: "/Introduction",
-        query: { schoolId: id },
+        query: { schoolId: schoolId },
       });
+    },
+    addFile(obj) {
+      for (let key in obj) {
+        if (typeof obj[key] == "object") {
+          this.addFile(obj[key]);
+        } else if (key == "firstImage") {
+          obj[key] = "http://192.168.110.143:8080" + obj[key];
+        }
+      }
+      return obj;
     },
   },
 };

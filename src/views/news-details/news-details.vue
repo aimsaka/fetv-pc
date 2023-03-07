@@ -13,14 +13,14 @@
           :message="{ path: 'news?name=头条新闻', title: '头条新闻' }"
         ></breadCrumb>
         <div class="title">
-          {{ this.detail.title }}
+          {{ detail.title }}
         </div>
         <div class="publisher">
-          <span>{{ detail.publishTime }}</span>
-          <span> 来源：{{ detail.resource }}</span>
+          <span>{{ detail.createTime }}</span>
+          <span> 来源：{{ detail.source }}</span>
           <img src="../../imges/weixin-23.png" alt="分享至微信" />
         </div>
-        <div class="content">内容</div>
+        <div class="content">{{ detail.content }}</div>
       </div>
       <!-- 右边表格 -->
       <div class="news_right">
@@ -37,9 +37,14 @@
           <img src="../../imges/1ggdfx.png" alt="" />
         </div>
         <!-- 新闻推介列表 -->
-        <div class="news_list_item" v-for="index of 10" :key="index">
+        <div
+          class="news_list_item"
+          v-for="item in news_list"
+          :key="item.informationId"
+          @click="refresh(item.informationId)"
+        >
           <div class="icon"></div>
-          <div class="item_title">{{ news_list.title }}</div>
+          <div class="item_title">{{ item.title }}</div>
         </div>
         <div class="more" @click="getAnother">换一批</div>
       </div>
@@ -54,19 +59,16 @@ import topnav from "../../Layout/topnav/topnav.vue";
 import breadCrumb from "../breadCrumb/breadCrumb.vue";
 import footerInformationVue from "../../Layout/footer-information/footer-information.vue";
 import rightLogo from "../../components/right-logo/right-logo.vue";
+import { queryNewInformationAPI, recommendNewsAPI } from "../../api";
 export default {
   name: "FetvPcNewsDetails",
   data() {
     return {
-      detail: {
-        title:
-          '" 福建省 "中小学劳动教育学科义务教育课程方案和课程标准培训班在榕举办',
-        publishTime: "2023-02-27 15:04:40",
-        resource: "人民网",
-      },
-      news_list: {
-        title: "虎年说“虎”｜一起来看看福建教育这些“虎”（一）",
-      },
+      detail: {},
+      news_list: {},
+      new_totalList: {},
+
+      page: 0,
     };
   },
   components: {
@@ -76,9 +78,33 @@ export default {
     rightLogo,
   },
   methods: {
-    getAnother() {
-      alert(111);
+    async getAnother(id) {
+      const arr = this.new_totalList.filter((item) => {
+        return item.informationId != id;
+      });
+      this.news_list = arr.slice(this.page, this.page + 10);
+      this.news_list.length == 0
+        ? this.$message.error("没有更多新闻啦")
+        : (this.page += 10);
     },
+    refresh(informationId) {
+      this.$router.push({
+        path: "/newsDetails",
+        query: { tid: informationId },
+      });
+      window.location.reload();
+    },
+  },
+  async created() {
+    this.page = 0;
+    let informationId = this.$route.query.tid;
+    console.log(informationId);
+    const res = await queryNewInformationAPI(informationId);
+    this.detail = res.data;
+    const recommendRes = await recommendNewsAPI();
+    this.new_totalList = recommendRes.rows;
+    this.news_list = this.new_totalList.slice(0, 10);
+    this.getAnother(informationId);
   },
 };
 </script>
@@ -113,7 +139,7 @@ export default {
     }
     .content {
       height: 800px;
-      background-color: skyblue;
+      // background-color: skyblue;
     }
   }
   .news_right {

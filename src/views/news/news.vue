@@ -13,7 +13,7 @@
         @click="
           $router.push({
             path: '/newsDetails',
-            query: { tid: item.tid },
+            query: { tid: item.informationId },
           })
         "
       >
@@ -31,9 +31,19 @@
         <div class="table">
           即时新闻 <img src="../../imges/1ggdfx.png" alt="" />
         </div>
-        <div class="table_title">
+        <div
+          class="table_title"
+          v-for="item in todays_list"
+          :key="item.informationId"
+          @click="
+            $router.push({
+              path: '/newsDetails',
+              query: { tid: item.informationId },
+            })
+          "
+        >
           <div class="dash"></div>
-          <div class="text">诗意中国——春色满园关不住了</div>
+          <div class="text">{{ item.title }}</div>
         </div>
       </div>
     </div>
@@ -42,12 +52,13 @@
 
 <script>
 import breadCrumb from "../breadCrumb/breadCrumb.vue";
-import { queryNewInformationListAPI } from "../../api";
+import { queryNewInformationListAPI, todayNewsAPI } from "../../api";
 export default {
   name: "FetvPcHeadLinenews",
   data() {
     return {
       description: [],
+      todays_list: {},
     };
   },
   components: {
@@ -61,7 +72,11 @@ export default {
   mounted() {
     this.load(this.type);
   },
-  created() {},
+  async created() {
+    const todayRes = await todayNewsAPI();
+    this.todays_list = todayRes.rows;
+    console.log(todayRes, "222222");
+  },
   watch: {
     type(newVal, oldVal) {
       console.log(newVal, oldVal);
@@ -90,6 +105,7 @@ export default {
       let index = list.indexOf(type);
       const res = await queryNewInformationListAPI(index);
       this.description = res.rows[0].informationApiList;
+      console.log(this.description);
     },
   },
 };

@@ -10,34 +10,37 @@
       <!-- 学校介绍 -->
       <div class="school-introduction">
         <div class="left">
-          <img src="../../imges/fwgdn.png" alt="" />
+          <img :src="detail.firstImage" alt="" />
         </div>
         <div class="right">
           <div class="school-detail">
-            <div class="school-name">泉州工出技术学院</div>
+            <div class="school-name">{{ detail.schoolName }}</div>
             <div class="school-lable">
               <ul>
-                <li>重点大学</li>
+                <li>{{ detail.schoolLabel }}</li>
                 <li>测试</li>
               </ul>
             </div>
           </div>
           <div class="school-motto"><span>淡泊名利 无以致远</span></div>
           <div class="school-nature">
-            <div>学校性质 <span>重点大学</span></div>
-            <div>学校官网<span>sadasdasdqwd</span></div>
-            <div>学校电话<span>156156156156165</span></div>
+            <div>
+              学校性质 <span>{{ detail.schoolQuality }}</span>
+            </div>
+            <div>
+              学校官网<span>{{ detail.remark }}</span>
+            </div>
+            <div>
+              学校电话<span>{{ detail.schoolPhone }}</span>
+            </div>
 
             <div>
-              院校地址<span
-                >福建省泉州市南安科技教育园区学园中路霞东彬星988号</span
-              >
+              院校地址<span>{{ detail.schoolAddress }}</span>
             </div>
           </div>
           <div class="school-introduce">
             简介：
-            泉州工程职业技术学院于2013年11月经福建省人民政府批准设立。学校由南安市属国有企业泉州市南翼置业发展集团有限责任公司全资子公司南安市宏翔教育投资有限公司举办。南翼集团下辖宏翔教育投资有限公司、南安城建集团等17家子公司，总资产约187亿元，形成以房地产开发、教育产业投资经营、港务码头建设经营、文化旅游、供应链金融、医疗康养产业投资运营、物业管理、城市综合开发等八大主要业务板块，可为学生提供广阔实习、实训平台及就业渠道。
-            学哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈鬼鬼鬼鬼鬼鬼鬼鬼鬼鬼鬼鬼鬼鬼鬼鬼鬼鬼校坐落于海上丝绸之路起点、中国著名侨乡南安市，依山傍水，风光旖旎，校区现有占地面积350多亩，建有教学楼、办公楼、图书馆、实验室、实训楼、学生宿舍楼
+            {{ detail.synopsis }}
           </div>
         </div>
       </div>
@@ -60,8 +63,38 @@
 import FooterInformation from "../../Layout/footer-information/footer-information.vue";
 import topnav from "../../Layout/topnav/topnav.vue";
 import BreadCrumb from "../breadCrumb/breadCrumb.vue";
+import { schoolDetailAPI } from "../../api/index";
 export default {
   components: { topnav, BreadCrumb, FooterInformation },
+  data() {
+    return {
+      detail: "",
+    };
+  },
+  async created() {
+    let schoolId = this.$route.query.schoolId;
+    const res = await schoolDetailAPI(schoolId);
+    this.detail = this.addFile(res.data);
+    console.log(res, "4444");
+    // console.log(this.$route.query.schoolId);
+  },
+  mounted() {},
+  methods: {
+    addFile(obj) {
+      for (let key in obj) {
+        if (typeof obj[key] == "object") {
+          this.addFile(obj[key]);
+        } else if (
+          key == "firstImage" ||
+          key == "image" ||
+          key == "schoolIcon"
+        ) {
+          obj[key] = "http://192.168.110.143:8080" + obj[key];
+        }
+      }
+      return obj;
+    },
+  },
 };
 </script>
 
