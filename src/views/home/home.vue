@@ -41,15 +41,16 @@
           <el-card class="box-card">
             <div v-for="(item, index) in newsList" :key="index" class="text item">
               <!-- 第一栏显示 -->
-              <el-link :href="item.src" target="_blank" :underline="false">
+              <el-link href="/ClassVideo?tid=" target="_blank" :underline="false">
                 <div class="headline-news" v-if="index === 0">
                   <img src="../../imges/新.png" />{{ item.title }}
                 </div>
               </el-link>
               <!-- 第二栏开始显示 -->
-              <el-link :href="item.src" target="_blank" :underline="false" v-if="index !== 0">
+              <el-link :href="'/NewsDetails?tid=' + item.informationId" target="_blank" :underline="false"
+                v-if="index !== 0">
                 &nbsp;<span class="point"></span>&nbsp;
-                <img src="../../imges/shipin.png" alt="" v-if="item.switch" />&nbsp;{{ item.title }}
+                <img src="../../imges/shipin.png" alt="" v-if="item.video" />&nbsp;{{ item.title }}
               </el-link>
               <div class="more">
                 <div class="more-button" @click="toNews">更多内容</div>
@@ -82,7 +83,8 @@ import schoolInformation from "../../components/school-information/school-inform
 import miniVideo from "../../components/mini-video/mini-video.vue";
 import advertisementVue from "../../components/advertisement/advertisement.vue";
 import elCol from "../../components/el-col/el-col.vue";
-import { queryNewInformation } from "../../api/information";
+// import { queryNewInformation } from "../../api/information";
+import { RecentInformation } from "../../api/home";
 export default {
   components: {
     hotTopics,
@@ -112,73 +114,7 @@ export default {
         },
       ],
 
-      newsList: [
-        {
-          title: "省关工委2023年全体委员会议召开",
-          src: "/NewsDetails?tid=1",
-          switch: false,
-        },
-        {
-          title: "厦门理工学院：“三度提升”推进党的二十大精神走深走实",
-          src: "/NewsDetails?tid=2",
-          switch: false,
-        },
-        {
-          title: "今起可打印准考证！本周六，福建省公务员考试开考",
-          src: "/NewsDetails?tid=3",
-          switch: true,
-        },
-        {
-          title: "福建启动职业院校教师素质提高三年行动计划",
-          src: "/NewsDetails?tid=4",
-          switch: false,
-        },
-        {
-          title: "劳动光荣 声动校园",
-          src: "/NewsDetails?tid=5",
-          switch: false,
-        },
-        {
-          title: "《中国大百科全书》第三版集中发布",
-          src: "/NewsDetails?tid=6",
-          switch: true,
-        },
-        {
-          title: "吴敏婕委员：当好传播中华文化艺术的使者",
-          src: "/NewsDetails?tid=7",
-          switch: true,
-        },
-        {
-          title: "福州格致中学：推动资源融合应用 打造立德树人新课堂",
-          src: "/NewsDetails?tid=8",
-          switch: true,
-        },
-        {
-          title: "福建规定8种类型学生可确认为家庭经济困难",
-          src: "/NewsDetails?tid=9",
-          switch: false,
-        },
-        {
-          title: "《福建省家庭经济困难学生认定办法》印发",
-          src: "/NewsDetails?tid=10",
-          switch: true,
-        },
-        {
-          title: "纪录片《郑成功》今起在央视播出",
-          src: "/NewsDetails?tid=11",
-          switch: false,
-        },
-        {
-          title: "纪录片《郑成功》今起在央视播出",
-          src: "/NewsDetails?tid=12",
-          switch: false,
-        },
-        {
-          title: "纪录片《郑成功》今起在央视播出",
-          src: "/NewsDetails?tid=13",
-          switch: false,
-        },
-      ],
+      newsList: [],
     };
   },
 
@@ -186,17 +122,21 @@ export default {
     toNews() {
       console.log(1);
     },
-    async gitNewsList() {
+    async getRecentInformation() {
       try {
-        const res = await queryNewInformation("1", "10")
+        const res = await RecentInformation()
         console.log(res);
+        this.newsList = res.rows
+        // this.list = res.rows[0].informationApiList
       } catch (error) {
         console.log(error)
       }
     },
+
   },
   created() {
-    this.gitNewsList()
+    // console.log('1111');
+    this.getRecentInformation()
   }
 };
 </script>
