@@ -54,12 +54,18 @@
               "
             >
               <!-- 第一栏显示 -->
+<<<<<<< HEAD
               <el-link :href="item.src" target="_blank" :underline="false">
                 <div class="headline-news" v-if="item.index">
+=======
+              <el-link href="/ClassVideo?tid=" target="_blank" :underline="false">
+                <div class="headline-news" v-if="index === 0">
+>>>>>>> 05971ff18a095be55077330982b4aa82edeaa212
                   <img src="../../imges/新.png" />{{ item.title }}
                 </div>
               </el-link>
               <!-- 第二栏开始显示 -->
+<<<<<<< HEAD
               <el-link :href="item.src" target="_blank" :underline="false">
                 &nbsp;<span class="point"></span>&nbsp;
                 <img
@@ -67,6 +73,12 @@
                   alt=""
                   v-if="item.video"
                 />&nbsp;{{ item.title }}
+=======
+              <el-link :href="'/NewsDetails?tid=' + item.informationId" target="_blank" :underline="false"
+                v-if="index !== 0">
+                &nbsp;<span class="point"></span>&nbsp;
+                <img src="../../imges/shipin.png" alt="" v-if="item.video" />&nbsp;{{ item.title }}
+>>>>>>> 05971ff18a095be55077330982b4aa82edeaa212
               </el-link>
               <div class="more">
                 <div class="more-button" @click="toNews">更多内容</div>
@@ -99,7 +111,12 @@ import schoolInformation from "../../components/school-information/school-inform
 import miniVideo from "../../components/mini-video/mini-video.vue";
 import advertisementVue from "../../components/advertisement/advertisement.vue";
 import elCol from "../../components/el-col/el-col.vue";
+<<<<<<< HEAD
 import { queryNewInformationAPI, latestNewsAPI } from "../../api/index";
+=======
+// import { queryNewInformation } from "../../api/information";
+import { RecentInformation } from "../../api/home";
+>>>>>>> 05971ff18a095be55077330982b4aa82edeaa212
 export default {
   components: {
     hotTopics,
@@ -137,15 +154,23 @@ export default {
     toNews() {
       console.log(1);
     },
-    async gitNewsList() {
+    async getRecentInformation() {
       try {
+<<<<<<< HEAD
         const res = await queryNewInformationAPI("1", "10");
+=======
+        const res = await RecentInformation()
+>>>>>>> 05971ff18a095be55077330982b4aa82edeaa212
         console.log(res);
+        this.newsList = res.rows
+        // this.list = res.rows[0].informationApiList
       } catch (error) {
         console.log(error);
       }
     },
+
   },
+<<<<<<< HEAD
   async created() {
     this.gitNewsList();
     const res = await latestNewsAPI();
@@ -153,6 +178,12 @@ export default {
     this.newsList = res.rows;
     console.log(res, "1111111");
   },
+=======
+  created() {
+    // console.log('1111');
+    this.getRecentInformation()
+  }
+>>>>>>> 05971ff18a095be55077330982b4aa82edeaa212
 };
 </script>
 
