@@ -1,7 +1,7 @@
 // 二次封装axios
 import axios from 'axios'
 const request = axios.create({
-  baseURL: 'http://43.139.172.18:8088',
+  baseURL: 'http://192.168.1.13:8080',
   timeout: 5000 // 超时时间
 })
 // 添加请求拦截器
@@ -27,7 +27,7 @@ request.interceptors.response.use(function (response) {
       }
       // 如果属性名是image，给属性值前面加上字符串
       else if (key === "image" || key === "imageLocation") {
-        obj[key] = "http://192.168.110.143:8080" + obj[key];
+        obj[key] = "http://192.168.1.13:8080" + obj[key];
       }
     }
   }

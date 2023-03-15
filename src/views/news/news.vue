@@ -212,6 +212,7 @@ export default {
       display: flex;
       align-items: center;
       flex: 1;
+      margin-bottom: 10px;
       .dash {
         display: inline;
         width: 10px;

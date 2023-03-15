@@ -34,3 +34,10 @@ export const todayNews = () => {
         url: '/index/fetv/information/TodayInformation'
     })
 }
+// 获取栏目新闻内容
+export const columnNews = () => {
+    return request({
+        method: 'get',
+        url: 'index/fetv/column/getColumnByList'
+    })
+}

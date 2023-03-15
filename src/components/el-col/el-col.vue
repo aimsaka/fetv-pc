@@ -1,20 +1,25 @@
 <template>
   <div class="el">
-    <div class="el_row" v-for="index in 6" :key="index">
+    <div class="el_row" v-for="(item, index) in news_list" :key="index">
       <div class="el_row_title">
         <img src="../../imges/xiaoyuan.jpg" alt="" />
         <layout class="more"></layout>
       </div>
       <div class="el_row_list">
         <el-link
-          v-for="index in 10"
-          :key="index"
+          v-for="item2 in item.informationApiList"
+          :key="item2.informationId"
           class="el_row_list_news"
-          :href="news_list.url"
           :underline="false"
+          @click="
+            $router.push({
+              path: 'newsDetails',
+              query: { tid: item2.informationId },
+            })
+          "
           style="font-size: 16px font-weight: 500px;  font-family: NotoSansHans-Regular;"
         >
-          {{ news_list[0].title }}
+          {{ item2.title }}
         </el-link>
       </div>
     </div>
@@ -23,7 +28,7 @@
 
 <script>
 import layout from "../layout/layout.vue";
-
+import { columnNewsAPI } from "../../api";
 export default {
   components: { layout },
   data() {
@@ -36,6 +41,12 @@ export default {
         },
       ],
     };
+  },
+  async created() {
+    const res = await columnNewsAPI();
+
+    this.news_list = res.rows.slice(0, 6);
+    console.log(this.news_list, "999");
   },
 };
 </script>

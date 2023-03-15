@@ -138,7 +138,7 @@ export default {
         if (typeof obj[key] == "object") {
           this.addFile(obj[key]);
         } else if (key == "firstImage") {
-          obj[key] = "http://192.168.110.143:8080" + obj[key];
+          obj[key] = "http://192.168.1.13:8080" + obj[key];
         }
       }
       return obj;

@@ -24,11 +24,22 @@
           @click="searchNews"
           >搜索</el-button
         >
+        <!-- :disabled="this.keyword == '' ? true : false" -->
       </div>
       <div class="news-box">
-        <div class="item-box" v-for="index in 10" :key="index">
-          <div class="title">联盟班学啊实打实</div>
-          <div class="source">福建巫山小学</div>
+        <div
+          class="item-box"
+          v-for="item in list"
+          :key="item.informationId"
+          @click="
+            $router.push({
+              path: 'newsDetails',
+              query: { tid: item.informationId },
+            })
+          "
+        >
+          <div class="title">{{ item.title }}</div>
+          <div class="source">{{ item.source }}</div>
         </div>
       </div>
     </div>
@@ -37,7 +48,7 @@
 </template>
 
 <script>
-import { searchNewsAPI } from "../../api";
+import { searchNewsAPI, homeNewsAPI } from "../../api";
 import footerInformation from "../../Layout/footer-information/footer-information.vue";
 export default {
   components: { footerInformation },
@@ -47,10 +58,31 @@ export default {
       keyword: "",
     };
   },
+  created() {
+    this.homeNews();
+  },
   methods: {
     async searchNews() {
+      if (this.keyword == "")
+        return this.$alert("内容不能为空噢", "搜索提醒", {
+          confirmButtontext: "确定",
+          type: "error",
+        });
       const res = await searchNewsAPI(this.keyword);
-      console.log(res);
+      this.list = res.data;
+      if (this.list == "") {
+        return this.$alert("暂无相关新闻", "搜索提醒", {
+          confirmButtonText: "确定",
+          callback: () => {
+            this.homeNews();
+            this.keyword = "";
+          },
+        });
+      }
+    },
+    async homeNews() {
+      const res = await homeNewsAPI();
+      this.list = res.data;
     },
   },
 };

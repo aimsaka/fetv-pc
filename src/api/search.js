@@ -1,7 +1,15 @@
 import request from "../utils/request";
+// 模糊查询新闻
 export const searchNews = (keyword) => {
     return request({
-        method: 'post',
-        url: `http://localhost:8080/index/fetv/information/getSearchTitle?title=${keyword}`
+        method: 'get',
+        url: `/index/fetv/information/getSearchTitle?title=${keyword}`
+    })
+}
+// 默认十条新闻
+export const homeNews = () => {
+    return request({
+        method: 'get',
+        url: `/index/fetv/information/Search`
     })
 }
