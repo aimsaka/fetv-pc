@@ -44,6 +44,12 @@ const router = new VueRouter({
       // 视频详情
       path: '/ClassVideo',
       component: ClassVideo,
+    },
+
+    {
+      // 
+      path: "/Search",
+      component: () => import("../views/search/search")
     }
   ],
   mode: 'history'

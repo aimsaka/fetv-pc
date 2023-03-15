@@ -17,6 +17,7 @@
                 v-model="input"
                 placeholder="搜索"
                 prefix-icon="el-icon-search"
+                @click.native="$router.push('/Search')"
               ></el-input>
             </div>
           </el-col>

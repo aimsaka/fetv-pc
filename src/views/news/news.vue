@@ -1,5 +1,13 @@
 <template>
   <div class="main">
+    <div class="backTop">
+      <img
+        v-show="isShow"
+        @click="backTop"
+        src="../../imges/weixin-23.png"
+        alt=""
+      />
+    </div>
     <!-- 左边内容 -->
     <div class="news_left">
       <breadCrumb
@@ -59,6 +67,7 @@ export default {
     return {
       description: [],
       todays_list: {},
+      isShow: false,
     };
   },
   components: {
@@ -71,6 +80,9 @@ export default {
   },
   mounted() {
     this.load(this.type);
+    this.$nextTick(() => {
+      window.addEventListener("scroll", this.mouseScroll);
+    });
   },
   async created() {
     const todayRes = await todayNewsAPI();
@@ -107,11 +119,34 @@ export default {
       this.description = res.rows[0].informationApiList;
       console.log(this.description);
     },
+    mouseScroll() {
+      let scrollTop = document.documentElement.scrollTop;
+      if (scrollTop > 50) {
+        this.isShow = true;
+      } else {
+        this.isShow = false;
+      }
+    },
+    backTop() {
+      let scrollTop = document.documentElement.scrollTop;
+      const timer = setInterval(() => {
+        scrollTop -= 100;
+        window.scrollTo(0, scrollTop);
+        if (scrollTop <= 0) {
+          clearInterval(timer);
+        }
+      }, 16.7);
+    },
   },
 };
 </script>
 
 <style scoped lang="scss">
+.backTop {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+}
 .main {
   width: 1200px;
   margin: 0 auto;

@@ -1,23 +1,31 @@
 <template>
   <div>
     <layout class="head">
-      <template #title>
-        微视频
-      </template>
-      <template #describe>
-        讲好我们自己的故事
-      </template>
+      <template #title> 微视频 </template>
+      <template #describe> 讲好我们自己的故事 </template>
     </layout>
 
     <div class="content">
       <div class="item" v-for="item in list" :key="item.src">
-        <el-link :underline="false" :href="'/ClassVideo?tid=' + item.informationId" target="_blank">
-          <el-image style="width: 383px; height: 214px; margin-left: 15px;" :src="item.image"></el-image>
+        <el-link
+          :underline="false"
+          @click="go(item.informationId)"
+          target="_blank"
+        >
+          <el-image
+            style="width: 383px; height: 214px; margin-left: 15px"
+            :src="item.image"
+          ></el-image>
         </el-link>
-        <el-link :underline="false" href="https://element.eleme.io" target="_blank">
-          <div style="text-align: center; font-size: 18px; ">{{ item.title }}</div>
+        <el-link
+          :underline="false"
+          href="https://element.eleme.io"
+          target="_blank"
+        >
+          <div style="text-align: center; font-size: 18px">
+            {{ item.title }}
+          </div>
         </el-link>
-
       </div>
     </div>
   </div>
@@ -28,36 +36,36 @@ import layout from "../layout/layout.vue";
 import { miniVideoImage } from "../../api/imges";
 export default {
   components: {
-    layout
+    layout,
   },
-  name: 'FetvPcMiniVideo',
+  name: "FetvPcMiniVideo",
 
   data() {
     return {
-      list: []
+      list: [],
     };
   },
 
-  mounted() {
-
-  },
+  mounted() {},
 
   methods: {
     // 获取微视频数据列表
     async getminiVideoImage() {
       try {
-        const res = await miniVideoImage("1")
-        this.list = res.rows[0].informationApiList
+        const res = await miniVideoImage("1");
+        this.list = res.rows[0].informationApiList;
         console.log(this.list);
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
+    },
+    go(id) {
+      this.$router.push({ path: "ClassVideo", query: { tid: id } });
     },
   },
   created() {
-    this.getminiVideoImage()
-  }
-
+    this.getminiVideoImage();
+  },
 };
 </script>
 
@@ -71,6 +79,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
 
-  .item {}
+  .item {
+  }
 }
 </style>

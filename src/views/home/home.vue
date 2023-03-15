@@ -1,5 +1,11 @@
 <template>
   <div class="homo">
+    <!-- 返回顶部 -->
+
+    <div style="width: 100%; height: 100%">
+      <el-backtop :bottom="60"></el-backtop>
+    </div>
+
     <!-- 头部 -->
     <header>
       <!-- 头条大字 -->
@@ -68,11 +74,7 @@
                 </div>
               </el-link>
               <!-- 第二栏开始显示 -->
-              <el-link
-                :href="'/NewsDetails?tid=' + item.informationId"
-                target="_blank"
-                :underline="false"
-              >
+              <el-link target="_blank" :underline="false">
                 &nbsp;<span class="point"></span>&nbsp;
                 <img
                   src="../../imges/shipin.png"

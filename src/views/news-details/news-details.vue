@@ -3,7 +3,15 @@
   <div class="news_detail">
     <!-- 顶部公共类 -->
     <topnav></topnav>
-
+    <!-- 回到顶部 -->
+    <div class="backTop">
+      <img
+        src="../../imges/children.png"
+        alt=""
+        v-show="toTopShow"
+        @click="TopBotton"
+      />
+    </div>
     <!-- 左边新闻 -->
     <div class="main">
       <div class="news_left">
@@ -67,7 +75,7 @@ export default {
       detail: {},
       news_list: {},
       new_totalList: {},
-
+      toTopShow: false,
       page: 0,
     };
   },
@@ -77,6 +85,13 @@ export default {
     footerInformationVue,
     rightLogo,
   },
+  mounted() {
+    this.$nextTick(function () {
+      //修改事件监听
+      window.addEventListener("scroll", this.handleScroll);
+    });
+  },
+
   methods: {
     async getAnother(id) {
       const arr = this.new_totalList.filter((item) => {
@@ -93,6 +108,26 @@ export default {
         query: { tid: informationId },
       });
       window.location.reload();
+    },
+    TopBotton() {
+      let scrollTop =
+        document.documentElement.scrollTop || document.body.scrollTop;
+      let timer = setInterval(() => {
+        scrollTop -= 100;
+        window.scrollTo(0, scrollTop);
+        if (scrollTop <= 0) {
+          clearInterval(timer);
+        }
+      }, 16.7);
+    },
+    handleScroll() {
+      this.scrollTop =
+        document.documentElement.scrollTop || document.body.scrollTop;
+      if (this.scrollTop > 50) {
+        this.toTopShow = true;
+      } else {
+        this.toTopShow = false;
+      }
     },
   },
   async created() {
@@ -111,6 +146,11 @@ export default {
 
 
 <style lang="scss" scoped >
+.backTop {
+  position: fixed;
+  right: 50px;
+  bottom: 50px;
+}
 .main {
   width: 1200px;
   margin: 0 auto;

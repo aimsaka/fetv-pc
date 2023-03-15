@@ -40,7 +40,7 @@
           </div>
           <div class="school-introduce">
             简介：
-            {{ detail.synopsis }}
+            <span v-html="detail.synopsis"></span>
           </div>
         </div>
       </div>
