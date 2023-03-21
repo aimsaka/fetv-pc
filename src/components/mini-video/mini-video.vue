@@ -1,8 +1,9 @@
 <template>
   <div>
     <layout class="head">
-      <template #title> 微视频 </template>
+      <template #title>微视频</template>
       <template #describe> 讲好我们自己的故事 </template>
+      <template #goNav>查看更多</template>
     </layout>
 
     <div class="content">

@@ -1,9 +1,11 @@
 <template>
   <div class="el">
-    <div class="el_row" v-for="(item, index) in news_list" :key="index">
+    <div class="el_row" v-for="item in news_list" :key="item.columnId">
       <div class="el_row_title">
         <img src="../../imges/xiaoyuan.jpg" alt="" />
-        <layout class="more"></layout>
+        <layout class="more" :columnTitle="item.columnTitle">
+          <template #goNav>查看更多</template></layout
+        >
       </div>
       <div class="el_row_list">
         <el-link
@@ -46,7 +48,7 @@ export default {
     const res = await columnNewsAPI();
 
     this.news_list = res.rows.slice(0, 6);
-    console.log(this.news_list, "999");
+    console.log(res.rows, "999");
   },
 };
 </script>

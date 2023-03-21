@@ -49,11 +49,38 @@
         <div class="scenery">
           校园风光<img src="../../imges/1ggdfx.png" alt="" />
         </div>
-        <div class="school-image">
-          <img src="" alt="" /><img src="" alt="" /><img src="" alt="" />
+        <div class="contain">
+          <div
+            class="school-image"
+            v-for="(item, index) in detail.image"
+            :key="index"
+          >
+            <img :src="item" />
+          </div>
         </div>
       </div>
+      <!-- 更多新闻 -->
+      <div class="more">
+        <el-menu
+          :default-active="activeIndex"
+          class="el-menu-demo"
+          mode="horizontal"
+          @select="handleSelect"
+          style="margin-left: -20px"
+        >
+          <el-menu-item
+            index="1"
+            style="font-size: 24px; font-weight: 700"
+            default-active="1"
+            >学校新闻</el-menu-item
+          >
+          <el-menu-item index="2" style="font-size: 24px; font-weight: 700"
+            >招生信息</el-menu-item
+          >
+        </el-menu>
+      </div>
     </div>
+
     <!-- 底部样式 -->
     <footer-information></footer-information>
   </div>
@@ -74,26 +101,29 @@ export default {
   async created() {
     let schoolId = this.$route.query.schoolId;
     const res = await schoolDetailAPI(schoolId);
-    this.detail = this.addFile(res.data);
+    // this.detail = this.addFile(res.data);
+    this.detail = res.data;
+    this.detail.image = this.detail.image.split(",");
+
     console.log(res, "4444");
     // console.log(this.$route.query.schoolId);
   },
   mounted() {},
   methods: {
-    addFile(obj) {
-      for (let key in obj) {
-        if (typeof obj[key] == "object") {
-          this.addFile(obj[key]);
-        } else if (
-          key == "firstImage" ||
-          key == "image" ||
-          key == "schoolIcon"
-        ) {
-          obj[key] = "http://192.168.110.143:8080" + obj[key];
-        }
-      }
-      return obj;
-    },
+    // addFile(obj) {
+    //   for (let key in obj) {
+    //     if (typeof obj[key] == "object") {
+    //       this.addFile(obj[key]);
+    //     } else if (
+    //       key == "firstImage" ||
+    //       key == "image" ||
+    //       key == "schoolIcon"
+    //     ) {
+    //       obj[key] = "http://192.168.110.143:8080" + obj[key];
+    //     }
+    //   }
+    //   return obj;
+    // },
   },
 };
 </script>
@@ -202,7 +232,22 @@ export default {
   }
   .school-scenery {
     padding: 23px 0px;
-    margin: 33px 0px 0px;
+    margin: 73px 0px 0px;
+    .contain {
+      height: 200px;
+      width: 1200px;
+      display: flex;
+      flex: 1;
+      .school-image {
+        width: 33%;
+        // padding: 0 20px;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+      }
+    }
   }
 }
 </style>

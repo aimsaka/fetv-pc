@@ -9,9 +9,17 @@
       </el-col>
 
       <el-col :span="2">
-        <el-button type="text" style="color: #ffdfaf;">查看更多 <div class="el-icon-arrow-right"
-            type="success|success_no_circle|info|warn|waiting|cancel|download|search|clear" size="23" color="#ffdfaf">
-          </div>
+        <el-button
+          type="text"
+          style="color: #ffdfaf"
+          @click="$router.push({ path: 'News', query: { name: '直播访谈' } })"
+          >查看更多
+          <div
+            class="el-icon-arrow-right"
+            type="success|success_no_circle|info|warn|waiting|cancel|download|search|clear"
+            size="23"
+            color="#ffdfaf"
+          ></div>
         </el-button>
       </el-col>
     </el-row>
@@ -26,10 +34,9 @@
     </div>
     <!-- 图片 -->
     <div class="img">
-
       <div class="item" v-for="(item, index) in list" :key="index">
         <el-link :underline="false" :href="item.id">
-          <img :src="item.src">
+          <img :src="item.src" />
         </el-link>
         <el-link :underline="false" :href="item.id">
           <div class="title">{{ item.title }}</div>
@@ -41,44 +48,39 @@
 
 <script>
 export default {
-  name: 'FetvPcLiveVideo',
+  name: "FetvPcLiveVideo",
 
   data() {
     return {
-      src: require('../../imges/btzzft.png'),
-      list: [{
-        src: require('../../imges/9cdb8cc9-c92f-4951-bc4f-adfeb04fd284.png'),
-        title: '大雾弥漫宛如仙境 福建福州化身“天空之城”',
-        id: 'ClassVideo?tid=1'
-      },
-      {
-        src: require('../../imges/28568f2e-de6e-4caa-833e-2693da8e8b0c.png'),
-        title: '福州：春暖花开 出游正当时',
-        id: 'ClassVideo?tid=3'
-
-      },
-      {
-        src: require('../../imges/79622e59-7979-4c9e-8576-6bf7b26b8853.jpg'),
-        title: '福建宁化：千亩李花怒放 绘就春日“雪景图”',
-        id: 'ClassVideo?tid=5'
-      },
-      {
-        src: require('../../imges/3f93e3e4-fa98-4088-a114-e9ea36ac8b06.png'),
-        title: '福建宁化：千亩李花怒放 绘就春日“雪景图”',
-        id: 'ClassVideo?tid=4'
-
-      }
+      src: require("../../imges/btzzft.png"),
+      list: [
+        {
+          src: require("../../imges/9cdb8cc9-c92f-4951-bc4f-adfeb04fd284.png"),
+          title: "大雾弥漫宛如仙境 福建福州化身“天空之城”",
+          id: "ClassVideo?tid=1",
+        },
+        {
+          src: require("../../imges/28568f2e-de6e-4caa-833e-2693da8e8b0c.png"),
+          title: "福州：春暖花开 出游正当时",
+          id: "ClassVideo?tid=3",
+        },
+        {
+          src: require("../../imges/79622e59-7979-4c9e-8576-6bf7b26b8853.jpg"),
+          title: "福建宁化：千亩李花怒放 绘就春日“雪景图”",
+          id: "ClassVideo?tid=5",
+        },
+        {
+          src: require("../../imges/3f93e3e4-fa98-4088-a114-e9ea36ac8b06.png"),
+          title: "福建宁化：千亩李花怒放 绘就春日“雪景图”",
+          id: "ClassVideo?tid=4",
+        },
       ],
     };
   },
 
-  mounted() {
+  mounted() {},
 
-  },
-
-  methods: {
-
-  },
+  methods: {},
 };
 </script>
 
@@ -137,8 +139,6 @@ export default {
       width: 252px;
       height: 142px;
 
-
-
       img {
         width: 252px;
         height: 142px;
@@ -153,7 +153,6 @@ export default {
         color: rgb(220, 61, 61);
       }
     }
-
   }
 }
 </style>

@@ -53,12 +53,7 @@
               v-for="item in newsList"
               :key="item.informationId"
               class="text item"
-              @click="
-                $router.push({
-                  path: '/newsDetails',
-                  query: { tid: item.informationId },
-                })
-              "
+              @click="goNews(item)"
             >
               <!-- 第一栏显示 -->
               <el-link :href="item.src" target="_blank" :underline="false">
@@ -150,8 +145,20 @@ export default {
   },
 
   methods: {
-    toNews() {
-      console.log(1);
+    toNews() {},
+    goNews(item) {
+      if (Object.keys(item).includes("video")) {
+        this.$router.push({
+          path: "ClassVideo",
+          query: { tid: item.informationId },
+        });
+      } else {
+        this.$router.push({
+          path: "newsDetails",
+          query: { tid: item.informationId },
+        });
+      }
+      // console.log(item);
     },
     async getRecentInformation() {
       // const res = await queryNewInformationAPI("1", "10");

@@ -5,8 +5,9 @@
       <!-- 左边栏 -->
       <div class="layout left">
         <layout class="head">
-          <template #title> 院校信息 </template>
+          <template #title>院校信息</template>
           <template #describe> 展现校园风采 传承大学之道 </template>
+          <template #goPage>查看更多</template>
         </layout>
         <!-- 左边栏内容 -->
         <el-carousel height="480px" indicator-position="none">
@@ -48,8 +49,9 @@
       <!-- 右边栏 -->
       <div class="layout right">
         <layout class="head">
-          <template #title> 云中课堂 </template>
+          <template #title>{{ title }}</template>
           <template #describe> 云教学 让知识传播更广泛 </template>
+          <template #goPage>查看更多</template>
         </layout>
         <div class="classroom">
           <div class="img-item">
@@ -86,7 +88,7 @@
 
 <script>
 import layout from "../layout/layout.vue";
-import { schoolListAPI } from "../../api";
+import { schoolListAPI, skyClassAPI } from "../../api";
 export default {
   components: {
     layout,
@@ -95,6 +97,7 @@ export default {
 
   data() {
     return {
+      title: "空中课堂",
       list: [],
       teacher: [
         {
@@ -119,10 +122,10 @@ export default {
   },
   async created() {
     const res = await schoolListAPI();
-
-    this.list = this.addFile(res.rows);
-
-    console.log(this.list, "333");
+    this.list = res.rows;
+    // 云中课堂
+    const result = await skyClassAPI("空中课堂");
+    console.log(result, "123123");
   },
   mounted() {},
 
@@ -133,16 +136,19 @@ export default {
         query: { schoolId: schoolId },
       });
     },
-    addFile(obj) {
-      for (let key in obj) {
-        if (typeof obj[key] == "object") {
-          this.addFile(obj[key]);
-        } else if (key == "firstImage") {
-          obj[key] = "http://192.168.1.13:8080" + obj[key];
-        }
-      }
-      return obj;
+    goPage() {
+      this.$router.push({ path: "School" });
     },
+    // addFile(obj) {
+    //   for (let key in obj) {
+    //     if (typeof obj[key] == "object") {
+    //       this.addFile(obj[key]);
+    //     } else if (key == "firstImage") {
+    //       obj[key] = "http://192.168.1.40:8080" + obj[key];
+    //     }
+    //   }
+    //   return obj;
+    // },
   },
 };
 </script>

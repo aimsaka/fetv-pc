@@ -6,11 +6,11 @@
         <bread-crumb
           :message="{ path: 'ClassVideo', title: '要点聚闻' }"
         ></bread-crumb>
-        <video src=""></video>
+        <video :src="list.video" controls></video>
         <div class="info">
-          <div class="title">知危图安</div>
+          <div class="title">{{ list.title }}</div>
           <div class="source">
-            <span>2022-04-15 14:54:36 来源:福建教育电视台</span>
+            <span>{{ list.createTime }} 来源:{{ list.source }}</span>
             <img src="../../imges/weixin-23.png" alt="" />
           </div>
         </div>
@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import { videoDetailAPI } from "../../api";
 import RightLogo from "../../components/right-logo/right-logo.vue";
 import FooterInformation from "../../Layout/footer-information/footer-information.vue";
 import topnav from "../../Layout/topnav/topnav.vue";
@@ -33,10 +34,17 @@ export default {
   name: "FetvPcClassVideo",
 
   data() {
-    return {};
+    return {
+      list: {},
+    };
   },
 
-  mounted() {},
+  async mounted() {
+    let id = this.$route.query.tid;
+    const res = await videoDetailAPI(id);
+    this.list = res.data;
+    console.log(this.list);
+  },
 
   methods: {},
 };

@@ -1,16 +1,13 @@
 <template>
   <div class="column">
     <layout class="head">
-      <template #title>
-        专题·栏目
-      </template>
-      <template #describe>
-        自办原创本土节目
-      </template>
+      <template #title> 专题·栏目 </template>
+      <template #describe> 自办原创本土节目 </template>
+      <template #goNav>查看更多</template>
     </layout>
     <div class="img">
       <div class="item" v-for="(item, index) in src" :key="index">
-        <img :src="item" alt="">
+        <img :src="item" alt="" />
       </div>
     </div>
   </div>
@@ -20,27 +17,23 @@
 import layout from "../layout/layout.vue";
 export default {
   components: {
-    layout
+    layout,
   },
-  name: 'FetvPcColumn',
+  name: "FetvPcColumn",
 
   data() {
     return {
       src: [
-        require('../../imges/fjjy.png'),
-        require('../../imges/xckp.jpg'),
-        require('../../imges/fwgdn.png')
-      ]
+        require("../../imges/fjjy.png"),
+        require("../../imges/xckp.jpg"),
+        require("../../imges/fwgdn.png"),
+      ],
     };
   },
 
-  mounted() {
+  mounted() {},
 
-  },
-
-  methods: {
-
-  },
+  methods: {},
 };
 </script>
 

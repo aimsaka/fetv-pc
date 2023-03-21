@@ -116,6 +116,7 @@ export default {
       ];
       let index = list.indexOf(type);
       const res = await queryNewInformationListAPI(index);
+      console.log(res, "123123123");
       this.description = res.rows[0].informationApiList;
       console.log(this.description);
     },

@@ -50,6 +50,14 @@ const router = new VueRouter({
       // 
       path: "/Search",
       component: () => import("../views/search/search")
+    },
+    {
+      path: '/AirClassroom',
+      component: () => import('../views/airClassroom/airClassroom')
+    },
+    {
+      path: '/School',
+      component: () => import('../views/school/school')
     }
   ],
   mode: 'history'
