@@ -10,6 +10,8 @@ import newsDetails from "../views/news-details/news-details.vue";
 // 微视频详情
 import ClassVideo from "../views/classVideo/classVideo.vue"
 
+import AirClassroom from "../views/airClassroom/airClassroom.vue";
+
 Vue.use(VueRouter)
 const router = new VueRouter({
   routes: [
@@ -27,6 +29,11 @@ const router = new VueRouter({
           // 新闻列表
           path: '/news',
           component: news,
+        },
+        {
+          // 新闻列表
+          path: '/AirClassroom',
+          component: AirClassroom,
         }
       ]
     },
