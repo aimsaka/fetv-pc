@@ -8,21 +8,10 @@
 
     <div class="content">
       <div class="item" v-for="item in list" :key="item.src">
-        <el-link
-          :underline="false"
-          @click="go(item.informationId)"
-          target="_blank"
-        >
-          <el-image
-            style="width: 383px; height: 214px; margin-left: 15px"
-            :src="item.image"
-          ></el-image>
+        <el-link :underline="false" @click="go(item.informationId)" target="_blank">
+          <el-image style="width: 383px; height: 214px; margin-left: 15px" :src="item.image"></el-image>
         </el-link>
-        <el-link
-          :underline="false"
-          href="https://element.eleme.io"
-          target="_blank"
-        >
+        <el-link :underline="false" href="https://element.eleme.io" target="_blank">
           <div style="text-align: center; font-size: 18px">
             {{ item.title }}
           </div>
@@ -34,7 +23,7 @@
 
 <script>
 import layout from "../layout/layout.vue";
-import { miniVideoImage } from "../../api/imges";
+import { queryAirClassroom } from "../../api/information";
 export default {
   components: {
     layout,
@@ -47,15 +36,15 @@ export default {
     };
   },
 
-  mounted() {},
+  mounted() { },
 
   methods: {
     // 获取微视频数据列表
-    async getminiVideoImage() {
+    async getqueryAirClassroom() {
       try {
-        const res = await miniVideoImage("1");
-        this.list = res.rows[0].informationApiList;
-        console.log(this.list);
+        const res = await queryAirClassroom("微视频", 1, 6);
+        this.list = res.rows;
+        console.log(res.rows, "微视频");
       } catch (error) {
         console.log(error);
       }
@@ -65,7 +54,7 @@ export default {
     },
   },
   created() {
-    this.getminiVideoImage();
+    this.getqueryAirClassroom();
   },
 };
 </script>
@@ -80,7 +69,6 @@ export default {
   display: flex;
   flex-wrap: wrap;
 
-  .item {
-  }
+  .item {}
 }
 </style>

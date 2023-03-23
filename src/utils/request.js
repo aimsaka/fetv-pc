@@ -1,7 +1,7 @@
 // 二次封装axios
 import axios from 'axios'
 const request = axios.create({
-  baseURL: 'http://192.168.110.143:8080',
+  baseURL: 'http://192.168.1.54:8080',
   timeout: 5000 // 超时时间
 })
 // 添加请求拦截器
@@ -32,7 +32,7 @@ request.interceptors.response.use(function (response) {
       if (typeof obj[key] === "string") {
         //使用正则表达式匹配目标字符串，并赋值给原属性或元素
         // http://192.168.1.13:8080
-        //192.168.110.143:8080
+        //192.168.1.54:8080
         obj[key] = obj[key].replace(/http:\/\/192\.168\.1\.13:8080/g, "");
         obj[key] = obj[key].replace(/http:\/\/192\.168\.110\.143:8080/g, "");
         obj[key] = obj[key].replace(/http:\/\/192\.168\.1\.18:8080/g, "");
@@ -52,7 +52,7 @@ request.interceptors.response.use(function (response) {
   function addPrefix(obj) {
     for (let key in obj) {
       if (typeof obj[key] === 'string' && obj[key].includes('/profile')) {
-        obj[key] = obj[key].replace(/\/profile/g, 'http://192.168.110.143:8080/profile');
+        obj[key] = obj[key].replace(/\/profile/g, 'http://192.168.1.54:8080/profile');
         // obj[key] = obj[key].replace(/\/profile/g, 'http://43.139.172.18:8088/profile');
       } else if (typeof obj[key] === 'object') {
         addPrefix(obj[key]);

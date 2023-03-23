@@ -4,9 +4,7 @@
     <topnav></topnav>
     <div class="content">
       <!-- 面包屑 -->
-      <bread-crumb
-        :message="{ path: 'Introduction', title: '学校' }"
-      ></bread-crumb>
+      <bread-crumb :message="{ path: 'Introduction', title: '学校' }"></bread-crumb>
       <!-- 学校介绍 -->
       <div class="school-introduction">
         <div class="left">
@@ -50,33 +48,17 @@
           校园风光<img src="../../imges/1ggdfx.png" alt="" />
         </div>
         <div class="contain">
-          <div
-            class="school-image"
-            v-for="(item, index) in detail.image"
-            :key="index"
-          >
+          <div class="school-image" v-for="(item, index) in detail.image" :key="index">
             <img :src="item" />
           </div>
         </div>
       </div>
       <!-- 更多新闻 -->
       <div class="more">
-        <el-menu
-          :default-active="activeIndex"
-          class="el-menu-demo"
-          mode="horizontal"
-          @select="handleSelect"
-          style="margin-left: -20px"
-        >
-          <el-menu-item
-            index="1"
-            style="font-size: 24px; font-weight: 700"
-            default-active="1"
-            >学校新闻</el-menu-item
-          >
-          <el-menu-item index="2" style="font-size: 24px; font-weight: 700"
-            >招生信息</el-menu-item
-          >
+        <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect"
+          style="margin-left: -20px">
+          <el-menu-item index="1" style="font-size: 24px; font-weight: 700" default-active="1">学校新闻</el-menu-item>
+          <el-menu-item index="2" style="font-size: 24px; font-weight: 700">招生信息</el-menu-item>
         </el-menu>
       </div>
     </div>
@@ -108,7 +90,7 @@ export default {
     console.log(res, "4444");
     // console.log(this.$route.query.schoolId);
   },
-  mounted() {},
+  mounted() { },
   methods: {
     // addFile(obj) {
     //   for (let key in obj) {
@@ -119,7 +101,7 @@ export default {
     //       key == "image" ||
     //       key == "schoolIcon"
     //     ) {
-    //       obj[key] = "http://192.168.110.143:8080" + obj[key];
+    //       obj[key] = "http://192.168.1.54:8080" + obj[key];
     //     }
     //   }
     //   return obj;
@@ -132,21 +114,27 @@ export default {
 .content {
   width: 1200px;
   margin: 0 auto;
+
   .school-introduction {
     display: flex;
+
     .left {
       width: 660px;
       height: 416px;
+
       img {
         width: 100%;
       }
     }
+
     .right {
       width: 550px;
       height: 420px;
       margin-left: 40px;
+
       .school-detail {
         border-bottom: solid 1px #f4f4f4;
+
         .school-name {
           font-family: NotoSansHans-Bold;
           font-size: 30px;
@@ -156,8 +144,10 @@ export default {
           letter-spacing: 0px;
           color: #000000;
         }
+
         .school-lable {
           padding: 10px 0;
+
           li {
             display: inline-block;
             width: 85px;
@@ -178,6 +168,7 @@ export default {
           }
         }
       }
+
       .school-motto {
         font-family: NotoSansHans-Regular;
         font-size: 14px;
@@ -187,6 +178,7 @@ export default {
         letter-spacing: 0px;
         color: #808080;
       }
+
       .school-nature {
         div {
           display: inline-block;
@@ -199,6 +191,7 @@ export default {
           // line-height: 40px;
           letter-spacing: 0px;
           color: #000000;
+
           span {
             margin-left: 19px;
             font-family: NotoSansHans-Regular;
@@ -211,6 +204,7 @@ export default {
           }
         }
       }
+
       .school-introduce {
         margin-top: 23px;
         width: 507px;
@@ -230,16 +224,20 @@ export default {
       }
     }
   }
+
   .school-scenery {
     padding: 23px 0px;
     margin: 73px 0px 0px;
+
     .contain {
       height: 200px;
       width: 1200px;
       display: flex;
       flex: 1;
+
       .school-image {
         width: 33%;
+
         // padding: 0 20px;
         img {
           width: 100%;
