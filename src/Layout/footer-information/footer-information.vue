@@ -12,7 +12,7 @@
         <el-link :underline="false">&emsp;福建文艺网&emsp;</el-link>
       </div>
     </div>
-    <!-- 底部文字栏 -->
+    <!-- 底部文字栏  -->
     <div class="text-bar">
       <div class="text-bar-item">
         福建教育网职业道德监督、违法和不良信息举报电话：
@@ -32,16 +32,26 @@
       <div class="text-bar-item">
         互联网新闻信息服务许可证编号
         <el-link :underline="false" type="primary">(35120190012)</el-link>
-        信息网络传播视听节目许可证号<el-link :underline="false" type="primary">(1309391)</el-link>
-        广播电视节目制作经营许可证（闽）字
-        第<el-link :underline="false" type="primary">00026号</el-link> 闽ICP备
+        信息网络传播视听节目许可证号<el-link :underline="false" type="primary"
+          >(1309391)</el-link
+        >
+        广播电视节目制作经营许可证（闽）字 第<el-link
+          :underline="false"
+          type="primary"
+          >00026号</el-link
+        >
+        闽ICP备
         <el-link :underline="false" type="primary">05027762号-1</el-link>
       </div>
       <div class="text-bar-item">
-        &emsp;<img src="../../imges/blue.png" alt="">
-        &emsp;<img src="../../imges/gonganbaobei.png" alt="">
-        &emsp;<img src="../../imges/children.png" alt="">
-        &emsp;<img src="../../imges/message.png" alt="">
+        &emsp;<img src="../../imges/blue.png" alt="" /> &emsp;<img
+          src="../../imges/gonganbaobei.png"
+          alt=""
+        />
+        &emsp;<img src="../../imges/children.png" alt="" /> &emsp;<img
+          src="../../imges/message.png"
+          alt=""
+        />
       </div>
     </div>
   </div>
@@ -49,21 +59,15 @@
 
 <script>
 export default {
-  name: 'FetvPcFooter',
+  name: "FetvPcFooter",
 
   data() {
-    return {
-
-    };
+    return {};
   },
 
-  mounted() {
+  mounted() {},
 
-  },
-
-  methods: {
-
-  },
+  methods: {},
 };
 </script>
 
@@ -94,7 +98,6 @@ export default {
     img {
       height: 40px;
     }
-
   }
 }
 
