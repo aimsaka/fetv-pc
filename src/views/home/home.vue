@@ -22,12 +22,9 @@
           <div class="block">
             <el-carousel height="507px" width="806px" indicator-position="none">
               <el-carousel-item v-for="(item, index) in list" :key="index">
-                <img :src="item.src" alt="" />
+                <img :src="item.image" alt="" />
                 <div class="title">
-                  <span
-                    ><span>{{ index + 1 }}</span
-                    >/3</span
-                  >{{ item.title }}
+                  <span><span>{{ index + 1 }}</span>/{{ list.length }}</span>{{ item.title }}
                 </div>
               </el-carousel-item>
             </el-carousel>
@@ -49,21 +46,12 @@
           </div>
           <!-- 右边栏新闻标题栏 -->
           <el-card class="box-card">
-            <div
-              v-for="item in newsList"
-              :key="item.informationId"
-              class="text item"
-              @click="goNews(item)"
-            >
+            <div v-for="item in newsList" :key="item.informationId" class="text item" @click="goNews(item)">
               <!-- 第一栏显示 -->
               <el-link :href="item.src" target="_blank" :underline="false">
                 <div class="headline-news"></div>
               </el-link>
-              <el-link
-                href="/ClassVideo?tid="
-                target="_blank"
-                :underline="false"
-              >
+              <el-link href="/ClassVideo?tid=" target="_blank" :underline="false">
                 <div class="headline-news" v-if="item.index">
                   <img src="../../imges/新.png" />{{ item.title }}
                 </div>
@@ -71,11 +59,7 @@
               <!-- 第二栏开始显示 -->
               <el-link target="_blank" :underline="false">
                 &nbsp;<span class="point"></span>&nbsp;
-                <img
-                  src="../../imges/shipin.png"
-                  alt=""
-                  v-if="item.video"
-                />&nbsp;{{ item.title }}
+                <img src="../../imges/shipin.png" alt="" v-if="item.video" />&nbsp;{{ item.title }}
               </el-link>
               <div class="more">
                 <div class="more-button" @click="toNews">更多内容</div>
@@ -110,6 +94,7 @@ import advertisementVue from "../../components/advertisement/advertisement.vue";
 import elCol from "../../components/el-col/el-col.vue";
 
 import { latestNewsAPI } from "../../api/index";
+import { queryAirClassroom } from "../../api/information";
 // import { RecentInformation } from "../../api/home";
 export default {
   components: {
@@ -125,27 +110,14 @@ export default {
   data() {
     return {
       url: require("../../imges/82282d63-8d79-4046-9f02-46e60060f802.png"),
-      list: [
-        {
-          src: require("../../imges/161b2574-dd97-490c-8a71-fcb8e7f11ac4.jpg"),
-          title: "大雾弥漫宛如仙境 福建福州化身“天空之城”",
-        },
-        {
-          src: require("../../imges/b986c848-6565-4abf-8402-a7acb7838268.jpg"),
-          title: "福州：春暖花开 出游正当时",
-        },
-        {
-          src: require("../../imges/d9aea775-eaa2-4ded-9261-be3ae08374b6.jpg"),
-          title: "福建宁化：千亩李花怒放 绘就春日“雪景图”",
-        },
-      ],
+      list: [],
 
       newsList: [],
     };
   },
 
   methods: {
-    toNews() {},
+    toNews() { },
     goNews(item) {
       if (Object.keys(item).includes("video")) {
         this.$router.push({
@@ -160,11 +132,15 @@ export default {
       }
       // console.log(item);
     },
-    async getRecentInformation() {
-      // const res = await queryNewInformationAPI("1", "10");
-      // console.log(res, "44444");
-      // this.newsList = res.rows;
-      // this.list = res.rows[0].informationApiList;
+
+    async getqueryAirClassroom() {
+      try {
+        const res = await queryAirClassroom("首页",);
+        this.list = res.rows;
+        console.log(res.rows, "首页");
+      } catch (error) {
+        console.log(error);
+      }
     },
   },
 
@@ -172,7 +148,7 @@ export default {
     const res = await latestNewsAPI();
     res.rows[0].index = 1;
     this.newsList = res.rows;
-    console.log(res, "1111111");
+    this.getqueryAirClassroom()
   },
 };
 </script>

@@ -9,17 +9,11 @@
       </el-col>
 
       <el-col :span="2">
-        <el-button
-          type="text"
-          style="color: #ffdfaf"
-          @click="$router.push({ path: 'News', query: { name: '直播访谈' } })"
-          >查看更多
-          <div
-            class="el-icon-arrow-right"
-            type="success|success_no_circle|info|warn|waiting|cancel|download|search|clear"
-            size="23"
-            color="#ffdfaf"
-          ></div>
+        <el-button type="text" style="color: #ffdfaf" @click="$router.push({ path: 'News', query: { name: '直播访谈' } })">
+          查看更多
+          <div class="el-icon-arrow-right"
+            type="success|success_no_circle|info|warn|waiting|cancel|download|search|clear" size="23" color="#ffdfaf">
+          </div>
         </el-button>
       </el-col>
     </el-row>
@@ -78,7 +72,7 @@ export default {
     };
   },
 
-  mounted() {},
+  mounted() { },
 
   methods: {},
 };
